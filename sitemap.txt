@@ -1,3 +1,5 @@
-http://example.com/2022/07/07/test/
 http://example.com/2022/07/06/hello-world/
+http://example.com/2022/07/07/test/
 http://example.com/
+http://example.com/tags/demo-start/
+http://example.com/categories/Hexo/
