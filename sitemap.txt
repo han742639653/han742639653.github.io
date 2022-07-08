@@ -1,5 +1,5 @@
-http://example.com/2022/07/06/hello-world/
-http://example.com/2022/07/07/test/
-http://example.com/
-http://example.com/tags/demo-start/
-http://example.com/categories/Hexo/
+https://han742639653.github.io/2022/07/06/hello-world/
+https://han742639653.github.io/2022/07/07/test/
+https://han742639653.github.io/
+https://han742639653.github.io/tags/demo-start/
+https://han742639653.github.io/categories/Hexo/

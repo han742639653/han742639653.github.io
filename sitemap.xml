@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/2022/07/06/hello-world/</loc>
+    <loc>https://han742639653.github.io/2022/07/06/hello-world/</loc>
     
     <lastmod>2022-07-08</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2022/07/07/test/</loc>
+    <loc>https://han742639653.github.io/2022/07/07/test/</loc>
     
     <lastmod>2022-07-07</lastmod>
     
@@ -21,7 +21,7 @@
   
 
   <url>
-    <loc>http://example.com/</loc>
+    <loc>https://han742639653.github.io/</loc>
     <lastmod>2022-07-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -29,7 +29,7 @@
 
   
   <url>
-    <loc>http://example.com/tags/demo-start/</loc>
+    <loc>https://han742639653.github.io/tags/demo-start/</loc>
     <lastmod>2022-07-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -38,7 +38,7 @@
 
   
   <url>
-    <loc>http://example.com/categories/Hexo/</loc>
+    <loc>https://han742639653.github.io/categories/Hexo/</loc>
     <lastmod>2022-07-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
