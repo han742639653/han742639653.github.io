@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  
+  
+  <title>Linux学习-4 | 荒凉院子</title>
+  <meta name="author" content="韩 亮" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="" />
+  
+  <meta name="description" content="##(28) Linux 常用基本命令 Centos7 默认shell工具是bash 还有tcsh（不是默认的）  12ls -l &#x2F;bin  |grep sh详细查看bin目录下 带sh的命令   1 帮助命令1.1 man获得帮助信息 基本语法 man [命令或配置文件]   (获取帮助信息)       信息 功能    NAME 命令的名称和单行描述   SYNOPSIS 怎样使用命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux学习-4">
+<meta property="og:url" content="http://example.com/2022/10/17/Linux%E5%AD%A6%E4%B9%A0-4/index.html">
+<meta property="og:site_name" content="荒凉院子">
+<meta property="og:description" content="##(28) Linux 常用基本命令 Centos7 默认shell工具是bash 还有tcsh（不是默认的）  12ls -l &#x2F;bin  |grep sh详细查看bin目录下 带sh的命令   1 帮助命令1.1 man获得帮助信息 基本语法 man [命令或配置文件]   (获取帮助信息)       信息 功能    NAME 命令的名称和单行描述   SYNOPSIS 怎样使用命令">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-17T10:09:46.000Z">
+<meta property="article:modified_time" content="2022-10-18T06:49:45.202Z">
+<meta property="article:author" content="韩 亮">
+<meta name="twitter:card" content="summary">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('/images/banner.webp');
+      }
+    
+    
+      @media(min-width:768px) {
+        body.custom-background {
+          background-image: url('/images/bg.webp');
+        }
+      }
+    
+  </style>
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                    
+                                        
+                                            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                        
+                                    
+                                        
+                                            <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                        
+                                    
+                                        
+                                            <li><a href="/friends/"><i class="fa fa-paw"></i>好伙伴</a></li>
+                                        
+                                    
+                                        
+                                            <li><a target="_blank" rel="noopener" href="https://github.com/han742639653"></a></li>
+                                        
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">荒凉院子</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>荒凉院子</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/17/Linux%E5%AD%A6%E4%B9%A0-4/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">Linux学习-4</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2022-10-17T10:09:46.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2022-10-17</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">韩 亮</span>
+                </li>
+                <li>
+                    <i class="fa fa-edit"></i> 
+                    
+                    
+                        ~5.30K
+                    
+                    字
+                </li>
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1666075785202"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+            <hr />
+            <div itemprop="articleBody"><p>##(28)</p>
+<h2 id="Linux-常用基本命令"><a href="#Linux-常用基本命令" class="headerlink" title="Linux 常用基本命令"></a>Linux 常用基本命令</h2><ul>
+<li>Centos7 默认shell工具是bash 还有tcsh（不是默认的）</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -l /bin  |grep sh</span><br><span class="line">详细查看bin目录下 带sh的命令</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="1-帮助命令"><a href="#1-帮助命令" class="headerlink" title="1 帮助命令"></a>1 帮助命令</h4><h5 id="1-1-man获得帮助信息"><a href="#1-1-man获得帮助信息" class="headerlink" title="1.1 man获得帮助信息"></a>1.1 man获得帮助信息</h5><ul>
+<li>基本语法<blockquote>
+<p>man [命令或配置文件]   (获取帮助信息)</p>
+</blockquote>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>信息</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NAME</td>
+<td>命令的名称和单行描述</td>
+</tr>
+<tr>
+<td>SYNOPSIS</td>
+<td>怎样使用命令</td>
+</tr>
+<tr>
+<td>DESCRIPTION</td>
+<td>命令功能的深入讨论</td>
+</tr>
+<tr>
+<td>EXAMPLES</td>
+<td>怎么使用命令的例子</td>
+</tr>
+<tr>
+<td>SEE ALSO</td>
+<td>相关主题（手册页）</td>
+</tr>
+</tbody></table>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">man ls name</span><br><span class="line">(查看ls帮助信息)</span><br></pre></td></tr></table></figure>
+<h5 id="1-2-help-获得shell内置命令的帮助信息"><a href="#1-2-help-获得shell内置命令的帮助信息" class="headerlink" title="1.2 help 获得shell内置命令的帮助信息"></a>1.2 help 获得shell内置命令的帮助信息</h5><p>一部分基础功能的系统命令是直接内嵌在 shell 中的，系统加载启动之后会随着 shell 一起加载，常驻系统内存中。这部分命令被称为“内置（built-in）命令”；相应的其它命令被称为“外部命令”</p>
+<ul>
+<li>基本语法<blockquote>
+<p>help 命令 （获得shell内置命令的帮助信息）<br>help cd  (查看cd命令的帮助信息)</p>
+</blockquote>
+</li>
+<li>常用快捷键<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ctrl+c   (停止进程)</span><br><span class="line">ctrl+i   清屏</span><br><span class="line">tab      提示</span><br><span class="line">上下键   查找执行过的命令</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="2-文件目录"><a href="#2-文件目录" class="headerlink" title="2 文件目录"></a>2 文件目录</h4><h5 id="2-1-pwd-显示当前工作目录的绝对路径"><a href="#2-1-pwd-显示当前工作目录的绝对路径" class="headerlink" title="2.1 pwd 显示当前工作目录的绝对路径"></a>2.1 pwd 显示当前工作目录的绝对路径</h5><p>pwd 全称（print working directory） 打印工作目录</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd    (显示当前工作目录的绝对路径)</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-2-ls列出目录的内容"><a href="#2-2-ls列出目录的内容" class="headerlink" title="2.2 ls列出目录的内容"></a>2.2 ls列出目录的内容</h5><p>ls  (list) 列出目录内容</p>
+<ul>
+<li><p>基本语法</p>
+<blockquote>
+<p>ls [选项] [目录或是文件]</p>
+</blockquote>
+</li>
+<li><p>选项说明</p>
+<blockquote>
+<p>-a   (全部文件，连通隐藏（开头为.的文件）一起列出来（常用）)<br>  -l    (长数据串列出，包含 文件的属性和权限等等数据)</p>
+</blockquote>
+</li>
+<li><p>显示说明</p>
+<blockquote>
+<p>每行列出的信息依次是： 文件类型与权限 链接数 文件属主 文件属组 文件大小用byte来表示 建立或最近修改的时间 名字 </p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -al </span><br><span class="line">(查看当前目录的所有内容信息)</span><br></pre></td></tr></table></figure>
+<h5 id="2-3-cd-切换目录"><a href="#2-3-cd-切换目录" class="headerlink" title="2.3 cd 切换目录"></a>2.3 cd 切换目录</h5><p>cd ： Change Directory 切换路径</p>
+</li>
+<li><p>基本语法</p>
+<blockquote>
+<p>cd [参数]</p>
+</blockquote>
+</li>
+<li><p>参数说明</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cd 绝对路径</td>
+<td>切换路径</td>
+</tr>
+<tr>
+<td>cd 相对路径</td>
+<td>切换路径</td>
+</tr>
+<tr>
+<td>cd ~ 或者 cd</td>
+<td>回到自己的家目录</td>
+</tr>
+<tr>
+<td>cd -</td>
+<td>回到上一次所在的目录</td>
+</tr>
+<tr>
+<td>cd ..</td>
+<td>回到当前目录的上一级目录</td>
+</tr>
+<tr>
+<td>cd -P</td>
+<td>跳转到实际物理路径，而非快捷方式路径</td>
+</tr>
+</tbody></table>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /root/     (使用绝对路径切换到root目录)</span><br><span class="line">cd  公共的/    （使用相对路径切换到“公共的”目录）</span><br><span class="line">cd ~          （表示回到自己的家目录）</span><br><span class="line">cd -            (回到上一次所在目录)</span><br><span class="line">cd ..           (表示回到当前目录的上一级目录)</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-4-mkdir-创建一个新的目录"><a href="#2-4-mkdir-创建一个新的目录" class="headerlink" title="2.4  mkdir 创建一个新的目录"></a>2.4  mkdir 创建一个新的目录</h5><p>mkdir:Make directory 建立目录</p>
+<ul>
+<li>基本语法<blockquote>
+<p>mkdir [选项] </p>
+</blockquote>
+</li>
+<li>选项说明<blockquote>
+<p>-p   创建多层目录</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mkdir yiceng</span><br><span class="line">mkdir yiceng/erceng</span><br><span class="line">(创建一个目录)</span><br><span class="line"></span><br><span class="line">mkdir -p yiceng/erceng/sanceng</span><br><span class="line"></span><br><span class="line">(创建一个多级目录)</span><br></pre></td></tr></table></figure>
+<h5 id="2-5-rmdir-删除一个空的"><a href="#2-5-rmdir-删除一个空的" class="headerlink" title="2.5 rmdir 删除一个空的"></a>2.5 rmdir 删除一个空的</h5><p>rmdir:Remove directory 移除目录</p>
+<ul>
+<li>基本语法<blockquote>
+<p>rmdir 要删除的空目录</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rmdir yiceng/erceng/sanceng</span><br><span class="line">(删除一个空的文件夹)</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-6-touch-创建空文件"><a href="#2-6-touch-创建空文件" class="headerlink" title="2.6 touch 创建空文件"></a>2.6 touch 创建空文件</h5><ul>
+<li>基本语法<blockquote>
+<p>touch 文件名称</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch yiceng/erceng/sanceng/3.txt</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="2-7-cp-复制文件或目录"><a href="#2-7-cp-复制文件或目录" class="headerlink" title="2.7 cp 复制文件或目录"></a>2.7 cp 复制文件或目录</h5><ul>
+<li>基本语法<blockquote>
+<p> cp [选项] source dest （复制source文件到dest）</p>
+</blockquote>
+</li>
+<li>选项说明<blockquote>
+<p>-r 递归复制整个文件夹</p>
+</blockquote>
+</li>
+<li>参数说明<blockquote>
+<p>source 源文件   dest  目标文件</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">\cp     (强制覆盖不提示的方法)</span><br><span class="line">cp yiceng/erceng/sanceng/3.txt   dest/new/    (复制文件)</span><br><span class="line">cp -r  yiceng/erceng      dest/new<span class="emphasis">_1          (递归复制整个文件夹)</span></span><br></pre></td></tr></table></figure>
+<h5 id="2-8-8-rm-删除文件或目录"><a href="#2-8-8-rm-删除文件或目录" class="headerlink" title="2.8  8 rm 删除文件或目录"></a>2.8  8 rm 删除文件或目录</h5><ul>
+<li><p>基本语法</p>
+<blockquote>
+<p>rm [选项] deleteFile （递归删除目录中所有内容)</p>
+</blockquote>
+</li>
+<li><p>选项说明</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-r    (递归删除目录中所有内容)</span><br><span class="line">-f    (强制执行删除操作，而不提示用于进行确认)</span><br><span class="line">-v     (显示指令的详细执行过程)</span><br><span class="line"> --------------------------------</span><br><span class="line">rm yiceng/erceng/sanceng/3.txt  (删除目录中的内容)</span><br><span class="line">rm -rf dest/new/    (递归删除目录中所有内容)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="2-9-mv-移动文件与目录或重命名"><a href="#2-9-mv-移动文件与目录或重命名" class="headerlink" title="2.9 mv 移动文件与目录或重命名"></a>2.9 mv 移动文件与目录或重命名</h5><ul>
+<li>基本语法 </li>
+<li>mv oldNameFile newNameFile （功能描述：重命名）</li>
+<li>mv /temp/movefile /targetFolder （功能描述：移动文件）</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv yiceng/erceng/sanceng/3.txt  yiceng/erceng/sanceng/3<span class="emphasis">_1.txt  (重命名)</span></span><br><span class="line"><span class="emphasis">mv yiceng/dest/3.txt   /new/new_</span>1/   (移动文件)</span><br></pre></td></tr></table></figure>
+<h5 id="2-10-cat-查看文件内容"><a href="#2-10-cat-查看文件内容" class="headerlink" title="2.10 cat 查看文件内容"></a>2.10 cat 查看文件内容</h5><p>查看文件内容，从第一行开始显示</p>
+<ul>
+<li>基本语法<blockquote>
+<p>cat [选项] 要查看的文件</p>
+</blockquote>
+</li>
+<li>选项说明<blockquote>
+<p>-n  显示所有行的行号，包括空行</p>
+</blockquote>
+</li>
+<li>一般查看比较小的文件，一屏幕能显示全的</li>
+<li>cat -n 3.txt (查看文件内容并显示行号)</li>
+</ul>
+<h5 id="2-11-more-文件内容分屏查看器"><a href="#2-11-more-文件内容分屏查看器" class="headerlink" title="2.11 more 文件内容分屏查看器"></a>2.11 more 文件内容分屏查看器</h5><p>more 指令是一个基于 VI 编辑器的文本过滤器，它以全屏幕的方式按页显示文本文件的内容。more 指令中内置了若干快捷键</p>
+<ul>
+<li><p>基本语法</p>
+<blockquote>
+<p>more 要查看的</p>
+</blockquote>
+</li>
+<li><p>操作说明</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">空白键 (space)  代表向下翻一页；</span><br><span class="line">Enter          代表向下翻『一行』；</span><br><span class="line">q              代表立刻离开 more ，不再显示该文件内容。</span><br><span class="line">Ctrl+F         向下滚动一屏</span><br><span class="line">Ctrl+B         返回上一屏</span><br><span class="line">=              输出当前行的行号</span><br><span class="line">:f            输出文件名和当前行的行号</span><br></pre></td></tr></table></figure>
+<h5 id="2-12-less-分屏显示文件内容"><a href="#2-12-less-分屏显示文件内容" class="headerlink" title="2.12 less 分屏显示文件内容"></a>2.12 less 分屏显示文件内容</h5><p>less 指令用来分屏查看文件内容，它的功能与 more 指令类似，但是比 more 指令更加<br>强大，支持各种显示终端。less 指令在显示文件内容时，并不是一次将整个文件加载之后<br>才显示，而是根据显示需要加载内容，对于显示大型文件具有较高的效率</p>
+</li>
+<li><p>基本语法</p>
+<blockquote>
+<p>less 要查看的文件</p>
+</blockquote>
+</li>
+<li><p>操作说明</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">空白键          向下翻动一页；</span><br><span class="line">[pagedown]      向下翻动一页</span><br><span class="line">[pageup]        向上翻动一页；</span><br><span class="line">/字串           向下搜寻『字串』的功能；n：向下查找；N：向上查找；</span><br><span class="line">?字串           向上搜寻『字串』的功能；n：向上查找；N：向下查找；</span><br><span class="line">q               离开 less</span><br></pre></td></tr></table></figure></li>
+<li><p>用SecureCRT时[pagedown]和[pageup]可能会出现无法识别的问题</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less 3.txt (less 查看文件)</span><br></pre></td></tr></table></figure>
+<h5 id="2-13-echo"><a href="#2-13-echo" class="headerlink" title="2.13 echo"></a>2.13 echo</h5></li>
+</ul>
+<p>echo 输出内容到控制台</p>
+<ul>
+<li><p>基本语法</p>
+<blockquote>
+<p>echo [选项]</p>
+</blockquote>
+</li>
+<li><p>选项</p>
+<blockquote>
+<p>-e  支持反斜线控制的字符转换</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\\     输出\本身</span><br><span class="line">\n     换行符</span><br><span class="line">\t     制表符，也就是 Tab 键</span><br><span class="line"> --------------</span><br><span class="line">echo &quot;yiceng/3.txt&quot;</span><br><span class="line">echo -e &quot;yiceng/3.txt&quot;</span><br></pre></td></tr></table></figure>
+<h5 id="2-14-head-显示文件头部内容"><a href="#2-14-head-显示文件头部内容" class="headerlink" title="2.14 head 显示文件头部内容"></a>2.14 head 显示文件头部内容</h5><p>head 用于显示文件的开头部分内容，默认情况下 head 指令显示文件的前 10 行内容</p>
+</li>
+<li><p>基本语法</p>
+</li>
+<li><p>head 文件 （查看文件头10行内容）</p>
+</li>
+<li><p>head -n 5 文件 （查看文件头5行内容，5可以是任意行数</p>
+</li>
+<li><p>选项说明</p>
+<blockquote>
+<p>-n&lt;行数&gt;     指定显示头部内容的行数</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head -n 2 3.txt</span><br></pre></td></tr></table></figure>
+<h5 id="2-15-tail-输出文件尾部内容"><a href="#2-15-tail-输出文件尾部内容" class="headerlink" title="2.15 tail 输出文件尾部内容"></a>2.15 tail 输出文件尾部内容</h5><p>tail 用于输出文件中尾部的内容，默认情况下 tail 指令显示文件的后 10 行内容</p>
+</li>
+<li><p>基本语法</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tail 文件        （查看文件尾部10行内容）</span><br><span class="line">tail -n 5 文件   （查看文件尾部5行内容，5可以是任意行数）</span><br><span class="line">tail -f 文件     （实时追踪该文档的所有更新)</span><br></pre></td></tr></table></figure></li>
+<li><p>选项说明</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-n&lt;行数&gt;      输出文件尾部 n 行内容</span><br><span class="line">-f            显示文件最新追加的内容，监视文件变化</span><br><span class="line"></span><br><span class="line"> ---------------------------------</span><br><span class="line"> tail -n 3 3.txt     (查看文件尾 3行内)</span><br><span class="line"> tail -f 3.txt       (实时追踪该档的所有更新)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="2-16-gt-输出重定向和-gt-gt-追加-（重点）"><a href="#2-16-gt-输出重定向和-gt-gt-追加-（重点）" class="headerlink" title="2.16  &gt; 输出重定向和  &gt;&gt; 追加   （重点）"></a>2.16  &gt; 输出重定向和  &gt;&gt; 追加   （重点）</h5><ul>
+<li>基本语法<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ls -l &gt; 文件          （列表的内容写入文件 a.txt 中（覆盖写）</span><br><span class="line">ls -al &gt;&gt; 文件       （功能描述：列表的内容追加到文件 aa.txt 的末尾）</span><br><span class="line">cat 文件 1 &gt; 文件 2   （功能描述：将文件 1 的内容覆盖到文件 2）</span><br><span class="line">echo “内容” &gt;&gt; 文件</span><br><span class="line"></span><br><span class="line">-------------------</span><br><span class="line">ls -l&gt;3.txt       (将 ls 查看信息写入到文件中)</span><br><span class="line">ls -l&gt;&gt;3.txt     (将 ls 查看信息追)</span><br><span class="line">echo hello&gt;&gt;3.txt    (采用 echo 将 hello 单词追加到文件中)</span><br></pre></td></tr></table></figure>
+<h5 id="2-17-ln-软链"><a href="#2-17-ln-软链" class="headerlink" title="2.17 ln 软链"></a>2.17 ln 软链</h5></li>
+</ul>
+<p>软链接也称为符号链接，类似于 windows 里的快捷方式，有自己的数据块，主要存放了链接其他文件的路径</p>
+<ul>
+<li><p>基本语法</p>
+<blockquote>
+<p>ln -s [原文件或目录] [软链接名] （给原文件创建一个软链接）</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">删除软链接：     rm -rf 软链接名，而不是 rm -rf 软链接名/</span><br><span class="line">如果使用 rm -rf 软链接名/ 删除，会把软链接对应的真实目录下内容删掉</span><br><span class="line">查询：通过 ll 就可以查看，列表属性第 1 位是 l，尾部会有位置指向</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-------------------</span><br><span class="line">ln -s xiyou/3.txt   ./new<span class="emphasis">_1</span></span><br><span class="line"><span class="emphasis">ll(查看软连接)</span></span><br><span class="line"><span class="emphasis">rm -rf  new_</span>1   (删除软连接)</span><br><span class="line"></span><br><span class="line">ln -s source/de/  ./new<span class="emphasis">_1</span></span><br><span class="line"><span class="emphasis">cd -P new_</span>1/   </span><br><span class="line">(进入软连接实际物理路径)</span><br></pre></td></tr></table></figure>
+<h5 id="2-18-history-查看已经执行过历史命令"><a href="#2-18-history-查看已经执行过历史命令" class="headerlink" title="2.18  history 查看已经执行过历史命令"></a>2.18  history 查看已经执行过历史命令</h5></li>
+<li><p>基本语法</p>
+<blockquote>
+<p>history （查看已经执行过历史命令）</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">history    (查看已经执行过的历史命令)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="3-时间日期类"><a href="#3-时间日期类" class="headerlink" title="3 时间日期类"></a>3 时间日期类</h3><h5 id="3-1-date-显示当前时间"><a href="#3-1-date-显示当前时间" class="headerlink" title="3.1 date 显示当前时间"></a>3.1 date 显示当前时间</h5><ul>
+<li><p>基本语法</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">date [OPTION]... [+FORMAT]</span><br><span class="line">选项说明</span><br><span class="line">-d&lt;时间字符串&gt;        显示指定的“时间字符串”表示的时间，而非当前时间</span><br><span class="line">-s&lt;日期时间&gt;          设置系统日期时间</span><br><span class="line">&lt;+日期时间格式&gt;        指定显示时使用的日期时间格式</span><br><span class="line"> -------------------</span><br><span class="line">（1）date             （显示当前时间）</span><br><span class="line">（2）date +%Y         （显示当前年份）</span><br><span class="line">（3）date +%m         （显示当前月份）</span><br><span class="line">（4）date +%d         （显示当前是哪一天）</span><br><span class="line">（5）date &quot;+%Y-%m-%d %H:%M:%S&quot; （显示年月日时分秒）</span><br></pre></td></tr></table></figure>
+<h5 id="3-2-date-显示非当前时间"><a href="#3-2-date-显示非当前时间" class="headerlink" title="3.2 date 显示非当前时间"></a>3.2 date 显示非当前时间</h5></li>
+<li><p>基本语法</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">（1）date -d &#x27;1 days ago&#x27; （显示前一天时间）</span><br><span class="line">（2）date -d &#x27;-1 days ago&#x27; （显示明天时间</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="3-3-date-设置系统时间"><a href="#3-3-date-设置系统时间" class="headerlink" title="3.3 date 设置系统时间"></a>3.3 date 设置系统时间</h5><ul>
+<li>基本语法<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">date -s  字符串时间</span><br><span class="line"></span><br><span class="line">----------</span><br><span class="line">date -s &quot;2017-06-19 20:52</span><br><span class="line">（设置系统时间）</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="3-4-cal-查看日历"><a href="#3-4-cal-查看日历" class="headerlink" title="3.4 cal 查看日历"></a>3.4 cal 查看日历</h5><ul>
+<li>基本语法<blockquote>
+<p>cal [选项] （不加选项，显示本月日历)</p>
+</blockquote>
+</li>
+<li>选项说明<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">具体某一年     显示这一年的日历</span><br><span class="line"></span><br><span class="line">cal    (查看当前月的日历)</span><br><span class="line">cal  2017    (查看 2017 年的日历)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "http://example.com/2022/10/17/Linux%E5%AD%A6%E4%B9%A0-4/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "http://example.com/2022/10/17/Linux%E5%AD%A6%E4%B9%A0-4/";
+            const title         = "「Linux学习-4」";
+            const excerpt       = `##(28)
+Linux 常用基本命令
+Centos7 默认shell工具是bash 还有tcsh（不是默认的）
+
+12ls -l /bin  |grep sh详细查看bin目录下 带sh的命令
+
+
+1 帮助命令1.1 man获得帮助...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    
+                </div>
+                <div class="pull-date">
+                    <time datetime="2022-10-18T06:49:45.202Z" itemprop="dateModified">最后编辑：2022-10-18</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" Linux学习-3" href="/2022/10/17/Linux学习-3/">&lt; 上一篇</a>
+            </div>
+            
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/2.webp" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                7
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                0
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                2
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 0.6em;">测试</a> <a href="/tags/%E8%87%AA%E5%AD%A6/" style="font-size: 0.8em;">自学</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2022/10/17/Linux%E5%AD%A6%E4%B9%A0-4/"><i class="fa  fa-book"></i> Linux学习-4</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/10/17/Linux%E5%AD%A6%E4%B9%A0-3/"><i class="fa  fa-book"></i> Linux学习-3</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/10/17/Linux%E5%AD%A6%E4%B9%A0-2/"><i class="fa  fa-book"></i> Linux学习-2</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/09/28/Linux%E5%AD%A6%E4%B9%A0-1/"><i class="fa  fa-book"></i> Linux学习_1</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/09/28/Markdowm%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fa  fa-book"></i> Markdowm学习笔记</a>
+            
+          
+        
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2022 荒凉院子 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by 韩 亮.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/vendors/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
