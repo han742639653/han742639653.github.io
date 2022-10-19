@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   
   
-  <title>Linux学习-3 | 荒凉院子</title>
+  <title>Linux学习-9 | 荒凉院子</title>
   <meta name="author" content="韩 亮" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -16,19 +16,19 @@
   
     <meta name="keywords" content="" />
   
-  <meta name="description" content="||win键+空格键 切换输入法 系统管理1 Linux中的进程和服务计算机中，一个正在执行的程序或命令，被叫“进程”（PID）、启动之后一直存在，常驻内存的进程，一般被称为服务 1.1 service服务管理（CentOS6 版本） 基本语法service 服务名 start| stop | restart |status（censtOS7 已经不使用）  查看服务的方法： &#x2F;etc&#x2F;init.">
+  <meta name="description" content="Linux 软件包管理1 RPMRPM（RedHat Package Manager），RedHat软件包管理工具，类似windows里面的setup.exe是Linux这系列操作系统里面的打包安装工具，它虽然是RedHat的标志，但理念是通用的。RPM包的名称格式Apache-1.3.23-11.i386.rpm  “apache” 软件名称 “1.3.23-11”软件的版本号，主版本和此版本">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux学习-3">
-<meta property="og:url" content="http://example.com/2022/10/17/Linux%E5%AD%A6%E4%B9%A0-3/index.html">
+<meta property="og:title" content="Linux学习-9">
+<meta property="og:url" content="http://example.com/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-9/index.html">
 <meta property="og:site_name" content="荒凉院子">
-<meta property="og:description" content="||win键+空格键 切换输入法 系统管理1 Linux中的进程和服务计算机中，一个正在执行的程序或命令，被叫“进程”（PID）、启动之后一直存在，常驻内存的进程，一般被称为服务 1.1 service服务管理（CentOS6 版本） 基本语法service 服务名 start| stop | restart |status（censtOS7 已经不使用）  查看服务的方法： &#x2F;etc&#x2F;init.">
+<meta property="og:description" content="Linux 软件包管理1 RPMRPM（RedHat Package Manager），RedHat软件包管理工具，类似windows里面的setup.exe是Linux这系列操作系统里面的打包安装工具，它虽然是RedHat的标志，但理念是通用的。RPM包的名称格式Apache-1.3.23-11.i386.rpm  “apache” 软件名称 “1.3.23-11”软件的版本号，主版本和此版本">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2022/10/17/Linux%E5%AD%A6%E4%B9%A0-3/3-1.jpg">
-<meta property="article:published_time" content="2022-10-17T06:45:22.000Z">
-<meta property="article:modified_time" content="2022-10-17T10:08:25.609Z">
+<meta property="og:image" content="http://example.com/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-9/6-7.jpg">
+<meta property="article:published_time" content="2022-10-19T07:33:38.000Z">
+<meta property="article:modified_time" content="2022-10-19T09:45:35.394Z">
 <meta property="article:author" content="韩 亮">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/10/17/Linux%E5%AD%A6%E4%B9%A0-3/3-1.jpg">
+<meta name="twitter:image" content="http://example.com/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-9/6-7.jpg">
   
   <!-- 站点验证相关 -->
   
@@ -149,15 +149,15 @@
 
             <article itemscope itemtype="https://schema.org/Article">
     
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/17/Linux%E5%AD%A6%E4%B9%A0-3/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-9/">
     <div class="kratos-hentry kratos-post-inner clearfix">
         <header class="kratos-entry-header">
             
-                <h1 class="kratos-entry-title text-center" itemprop="name headline">Linux学习-3</h1>
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">Linux学习-9</h1>
             
             
             <ul class="kratos-post-meta text-center">
-                <li><time datetime="2022-10-17T06:45:22.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2022-10-17</time></li>
+                <li><time datetime="2022-10-19T07:33:38.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2022-10-19</time></li>
                 <li itemprop="author" itemscope itemtype="https://schema.org/Person">
                     <i class="fa fa-user"></i> 作者 <span itemprop="name">韩 亮</span>
                 </li>
@@ -165,7 +165,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        ~2.45K
+                        ~1.81K
                     
                     字
                 </li>
@@ -176,88 +176,32 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1666001305609"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1666172735394"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
             <hr />
-            <div itemprop="articleBody"><p>||win键+空格键 切换输入法</p>
-<h1 id="系统管理"><a href="#系统管理" class="headerlink" title="系统管理"></a>系统管理</h1><h2 id="1-Linux中的进程和服务"><a href="#1-Linux中的进程和服务" class="headerlink" title="1 Linux中的进程和服务"></a>1 Linux中的进程和服务</h2><p>计算机中，一个正在执行的程序或命令，被叫“进程”（PID）、启动之后一直存在，常驻内存的进程，一般被称为服务</p>
-<h3 id="1-1-service服务管理（CentOS6-版本）"><a href="#1-1-service服务管理（CentOS6-版本）" class="headerlink" title="1.1 service服务管理（CentOS6 版本）"></a>1.1 service服务管理（CentOS6 版本）</h3><ul>
-<li><p>基本语法<br>service 服务名 start| stop | restart |status（censtOS7 已经不使用）</p>
-</li>
-<li><p>查看服务的方法： /etc/init.d/服务名 </p>
-</li>
-<li><p>pwd 查看当前路径  </p>
-</li>
-<li><p>ls -al 查看文件</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(1) 查看网络服务的状态</span><br><span class="line">service network status</span><br><span class="line">(2) 停止网络服务</span><br><span class="line">service network stop</span><br><span class="line">(3) 启动网络服务</span><br><span class="line"> service network start</span><br><span class="line">(4) service network restart</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-chkconfig-设置后台服务的自启配置（CentOS-6版本）"><a href="#1-2-chkconfig-设置后台服务的自启配置（CentOS-6版本）" class="headerlink" title="1.2 chkconfig 设置后台服务的自启配置（CentOS 6版本）"></a>1.2 chkconfig 设置后台服务的自启配置（CentOS 6版本）</h3></li>
-<li><p>基本语法</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chkconfig  --list  查看</span><br><span class="line">chkconfig   (查看所有服务器自启配置)</span><br><span class="line">chkconfig 服务名 off    （关掉指定服务的自动启动）</span><br><span class="line">chkconfig 服务名 on      (开启指定服务的自动启动)</span><br><span class="line">chkconfig 服务名 --list   (查看服务开机启动状态)</span><br></pre></td></tr></table></figure></li>
-<li><p>开启/关闭 network (网络)服务的自动启动</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chkconfig network on</span><br><span class="line">chkconfig network off</span><br></pre></td></tr></table></figure></li>
-<li><p>开启/关闭 network 服务指定级别的自动启动</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --level 指定级别（0-5） network on</span><br><span class="line">chkconfig --level 指定级别（0-5） network off</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="1-3-systemctl-CentOS-7-版本"><a href="#1-3-systemctl-CentOS-7-版本" class="headerlink" title="1.3 systemctl(CentOS 7 版本)"></a>1.3 systemctl(CentOS 7 版本)</h3><ul>
-<li><p>基本语法<br>systemctl start | stop| restart |status 服务名</p>
-</li>
-<li><p>查看方法 </p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># /usr/lib/systemd/system</span></span><br><span class="line"><span class="section"># pwd</span></span><br><span class="line"><span class="section"># ls -all</span></span><br></pre></td></tr></table></figure></li>
-<li><p>防火墙</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(1)查看防火墙服务的状态</span><br><span class="line">systemctl status firewalled</span><br><span class="line">(2)停止防火墙服务</span><br><span class="line">systemctl stop firewalled</span><br><span class="line">(3)启动防火墙服务</span><br><span class="line">systemctl start firewalled</span><br><span class="line">(4)重启防火墙服务</span><br><span class="line">systemctl restart firewalled</span><br></pre></td></tr></table></figure>
-<h3 id="1-4-systemctl-设置后台服务的自启配置"><a href="#1-4-systemctl-设置后台服务的自启配置" class="headerlink" title="1.4 systemctl 设置后台服务的自启配置"></a>1.4 systemctl 设置后台服务的自启配置</h3></li>
-<li><p>基本语法</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">systemctl list-unit-files (查看服务开机启动状态)</span><br><span class="line">systemctl disable service<span class="emphasis">_name (关掉指定服务的自动启动)</span></span><br><span class="line"><span class="emphasis">systemctl enable service_</span>name (开启指定服务的自动启动)</span><br><span class="line">--开启/关闭iptables（防火墙）服务的自动启动</span><br><span class="line">systemctl enable firewalld.service</span><br><span class="line">systemctl disable firewalld.service</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="1-5-系统的运行级别"><a href="#1-5-系统的运行级别" class="headerlink" title="1.5 系统的运行级别"></a>1.5 系统的运行级别</h3><ul>
-<li>运行级别</li>
-</ul>
-<p><img src="/2022/10/17/Linux%E5%AD%A6%E4%B9%A0-3/3-1.jpg" alt="运行级别"></p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">查看默认级别   vi/etc/inittab</span><br><span class="line"></span><br><span class="line">Linux系统有7种运行级别：常用的级别是3和5</span><br><span class="line">运行级别0：系统停机状态，系统默认运行级别不能设为0，否则不能正常启动</span><br><span class="line">运行级别1：单用户工作状态，root权限，用于系统维护，禁止远程登陆(安全模式)</span><br><span class="line">运行级别2：多用户状态（没有NFS），不支持网络</span><br><span class="line">运行级别3：完全的多用户状态（NFS）,登陆后进入控制台命令模式（黑框框）</span><br><span class="line">运行级别4：系统未使用，保留（一般不用）</span><br><span class="line">运行级别5：X11控制台，登陆后进入图像GUI模式</span><br><span class="line">运行级别6：系统正常关闭并重启，默认运行级别不能设为6，否则不能正常启动</span><br></pre></td></tr></table></figure>
-<p>CentOS7 的运行级别简化为：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">multi-user.target  等价于原运行级别3 （多用户有网， 无图形界面）</span><br><span class="line">graphical.target 等价于原运行级别5 （多用户有网,有图形界面）</span><br><span class="line"></span><br><span class="line">systemctl get-default（查看当前运行级别）</span><br><span class="line"></span><br><span class="line">修改当前运行级别</span><br><span class="line">systemctl set-default TARGET.target  (这里TARGET取multi-user 或者 graphical)</span><br></pre></td></tr></table></figure>
-<h3 id="1-6-关机重启命令"><a href="#1-6-关机重启命令" class="headerlink" title="1.6 关机重启命令"></a>1.6 关机重启命令</h3><ul>
-<li>基本语法</li>
-<li>– sync (将数据由内存同步到硬盘中)</li>
-<li>–halt （停机，关闭系统，但不断电） </li>
-<li>–poweroff（关机，断电）</li>
-<li>–reboot（重启  等同于 shutdown -r now） </li>
-<li>shutdown [选项] 时间</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-H</td>
-<td>相当 –halt，停机</td>
-</tr>
-<tr>
-<td>-r</td>
-<td>-r=reboot 重启</td>
-</tr>
-<tr>
-<td>now</td>
-<td>立刻关机</td>
-</tr>
-<tr>
-<td>时间</td>
-<td>等待多久后关机</td>
-</tr>
-</tbody></table>
+            <div itemprop="articleBody"><h2 id="Linux-软件包管理"><a href="#Linux-软件包管理" class="headerlink" title="Linux 软件包管理"></a>Linux 软件包管理</h2><h3 id="1-RPM"><a href="#1-RPM" class="headerlink" title="1 RPM"></a>1 RPM</h3><p>RPM（RedHat Package Manager），RedHat软件包管理工具，类似windows里面的setup.exe<br>是Linux这系列操作系统里面的打包安装工具，它虽然是RedHat的标志，但理念是通用的。<br>RPM包的名称格式<br>Apache-1.3.23-11.i386.rpm</p>
 <ul>
-<li>Linux 系统中为了提高磁盘的读写效率，对磁盘采取了 “预读迟写”操作方式。</li>
-<li>当用户保存文件时，Linux 核心并不一定立即将保存数据写入物理磁盘中，而是将数据保存在缓<br>冲区中，等缓冲区满时再写入磁盘，这种方式可以极大的提高磁盘写入数据的效率。</li>
-<li>但是，也带来了安全隐患，如果数据还未写入磁盘时，系统掉电或者其他严重问题出现，则将导<br>致数据丢失。</li>
-<li>使用 sync 指令可以立即将缓冲区的数据写入磁盘。</li>
+<li>“apache” 软件名称</li>
+<li>“1.3.23-11”软件的版本号，主版本和此版本</li>
+<li>“i386”是软件所运行的硬件平台，Intel 32位处理器的统称</li>
+<li>“rpm”文件扩展名，代表RPM包</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># sync </span></span><br><span class="line">(将数据由内存同步到硬盘中)</span><br><span class="line"><span class="section"># reboot</span></span><br><span class="line">(重启)</span><br><span class="line"><span class="section"># halt</span></span><br><span class="line">(停机，不停电)</span><br><span class="line"><span class="section"># shutdown -h 1 &#x27;This server will shutdown after 1 mins&#x27;</span></span><br><span class="line">(计算机将在1分钟后关机，并且会显示在登陆用户的当前屏幕)</span><br><span class="line"></span><br><span class="line"><span class="section"># shutdown -h now </span></span><br><span class="line">（立马关机，等同于poweroff</span><br><span class="line"><span class="section"># shutdown -r now </span></span><br><span class="line">(系统立马重启)</span><br><span class="line"><span class="section"># shutdown -c  </span></span><br><span class="line">(取消关机)</span><br></pre></td></tr></table></figure>
+<h4 id="1-1-RPM-查询命令（rpm-qa）"><a href="#1-1-RPM-查询命令（rpm-qa）" class="headerlink" title="1.1  RPM 查询命令（rpm -qa）"></a>1.1  RPM 查询命令（rpm -qa）</h4><ul>
+<li>基本语法<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">由于软件包比较多，一般都会采取过滤。rpm -qa |grep rpm软件包</span><br><span class="line">rpm -qa （查询所安装的所有 rpm 软件包)</span><br><span class="line"><span class="bullet">-</span> ------</span><br><span class="line"></span><br><span class="line">rpm -qa | grep firefox</span><br><span class="line">(查询firefox软件安装情况)</span><br><span class="line"></span><br><span class="line"><span class="section">#### 1.2 RPM 卸载命令</span></span><br><span class="line"><span class="bullet">-</span> 基本语法</span><br><span class="line"><span class="code">```markdown</span></span><br><span class="line"><span class="code">rpm -e RPM软件包</span></span><br><span class="line"><span class="code">rpm -e --nodeps 软件</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">-e 卸载软件包</span></span><br><span class="line"><span class="code">--nodeps 卸载软件时，不检查依赖。这样的话，那些使用该软件包的软件在此之后可能就不能正常工作</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">rpm -e firefox</span></span><br><span class="line"><span class="code"></span></span><br></pre></td></tr></table></figure>
+<h4 id="1-3-RPM-安装命令"><a href="#1-3-RPM-安装命令" class="headerlink" title="1.3 RPM 安装命令"></a>1.3 RPM 安装命令</h4></li>
+<li>基本语法<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh RPM 包全名</span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> i install     安装</span><br><span class="line">-v --verbose    显示详细信息</span><br><span class="line">-h --hash       进度条</span><br><span class="line">--nodeps        安装前不检查依赖</span><br><span class="line"></span><br><span class="line">rpm -ivh firefox-45.0.1-1.el6.centos.x86<span class="emphasis">_64.rpm</span></span><br><span class="line"><span class="emphasis">(安装firefox软件)</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-YUM"><a href="#2-YUM" class="headerlink" title="2 YUM"></a>2 YUM</h3><p>YUM（全称为 Yellow dog Updater, Modified）是一个在 Fedora 和 RedHat 以及 CentOS<br>中的 Shell 前端软件包管理器。基于 RPM 包管理，能够从指定的服务器自动下载 RPM 包<br>并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包，无须繁琐地一次<br>次下载、安装</p>
+<p><img src="/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-9/6-7.jpg" alt="YUM"></p>
+<h4 id="2-1-YUM-的常用命令"><a href="#2-1-YUM-的常用命令" class="headerlink" title="2.1 YUM 的常用命令"></a>2.1 YUM 的常用命令</h4><ul>
+<li>基本语法<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">yum [选项] [参数]</span><br><span class="line"></span><br><span class="line">选项</span><br><span class="line">-y 对所有提问都回答“yes”</span><br><span class="line">参数</span><br><span class="line">install         安装 rpm 软件包</span><br><span class="line">update          更新 rpm 软件包</span><br><span class="line">check-update    检查是否有可用的更新 rpm 软件包</span><br><span class="line">remove          删除指定的 rpm 软件包</span><br><span class="line">list            显示软件包信息</span><br><span class="line">clean           清理 yum 过期的缓存</span><br><span class="line">deplist         显示 yum 软件包的所有依赖关</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">yum -y install firefox   (采用 yum 方式安装 firefox)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="2-2-修改网络-YUM-源"><a href="#2-2-修改网络-YUM-源" class="headerlink" title="2.2 修改网络 YUM 源"></a>2.2 修改网络 YUM 源</h4><ul>
+<li>默认的系统 YUM 源，需要连接国外 apache 网站，网速比较慢，可以修改关联的网络YUM 源为国内镜像的网站，比如网易 163,aliyun 等<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1）安装 wget, wget 用来从指定的 URL 下载文件</span><br><span class="line">yum install wget</span><br><span class="line"></span><br><span class="line">2）在/etc/yum.repos.d/目录下，备份默认的 repos 文件</span><br><span class="line">cp CentOS-Base.repo CentOS-B</span><br><span class="line">3）下载网易 163 或者是 aliyun 的 repos 文件,任选其一</span><br><span class="line"></span><br><span class="line">wget</span><br><span class="line">http://mirrors.aliyun.com/repo/Centos-7.repo //阿里云</span><br><span class="line">wget</span><br><span class="line">http://mirrors.163.com/.help/CentOS7-Base-163.repo //网易 163</span><br><span class="line"></span><br><span class="line">4）使用下载好的 repos 文件替换默认的 repos 文件</span><br><span class="line">例如:用 CentOS7-Base-163.repo 替换 CentOS-Base.repo</span><br><span class="line">mv CentOS7-Base-163.repo CentOS-Base.re</span><br><span class="line">5）清理旧缓存数据，缓存新数据</span><br><span class="line">yum clean all</span><br><span class="line">yum makecache</span><br><span class="line">(yum makecache 就是把服务器的包信息下载到本地电脑缓存起来)</span><br></pre></td></tr></table></figure></li>
+</ul>
 </div>
         </div>
         
@@ -311,7 +255,7 @@
     <script type="text/javascript">
         $(()=>{
             new QRCode("wechat-qr", {
-                text: "http://example.com/2022/10/17/Linux%E5%AD%A6%E4%B9%A0-3/",
+                text: "http://example.com/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-9/",
                 width: 150,
                 height: 150,
                 correctLevel : QRCode.CorrectLevel.H
@@ -323,11 +267,9 @@
             const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
-            const hostUrl       = "http://example.com/2022/10/17/Linux%E5%AD%A6%E4%B9%A0-3/";
-            const title         = "「Linux学习-3」";
-            const excerpt       = `||win键+空格键 切换输入法
-系统管理1 Linux中的进程和服务计算机中，一个正在执行的程序或命令，被叫“进程”（PID）、启动之后一直存在，常驻内存的进程，一般被称为服务
-1.1 service服务管理（CentOS6 版本）...`;
+            const hostUrl       = "http://example.com/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-9/";
+            const title         = "「Linux学习-9」";
+            const excerpt       = `Linux 软件包管理1 RPMRPM（RedHat Package Manager），RedHat软件包管理工具，类似windows里面的setup.exe是Linux这系列操作系统里面的打包安装工具，它虽然是RedHat的标志，但...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -349,7 +291,7 @@
                     
                 </div>
                 <div class="pull-date">
-                    <time datetime="2022-10-17T10:08:25.609Z" itemprop="dateModified">最后编辑：2022-10-17</time>
+                    <time datetime="2022-10-19T09:45:35.394Z" itemprop="dateModified">最后编辑：2022-10-19</time>
                 </div>
             </div>
         </footer>
@@ -358,13 +300,9 @@
         <nav class="navigation post-navigation clearfix" role="navigation">
             
             <div class="nav-previous clearfix">
-                <a title=" Linux学习-2" href="/2022/10/17/Linux学习-2/">&lt; 上一篇</a>
+                <a title=" Linux学习-8" href="/2022/10/19/Linux学习-8/">&lt; 上一篇</a>
             </div>
             
-            
-            <div class="nav-next clearfix">
-                <a title=" Linux学习-4" href="/2022/10/17/Linux学习-4/">下一篇 &gt;</a>
-            </div>
             
         </nav>
     
