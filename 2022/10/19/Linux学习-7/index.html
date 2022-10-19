@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   
   
-  <title>Hello World | 荒凉院子</title>
+  <title>Linux学习-7 | 荒凉院子</title>
   <meta name="author" content="韩 亮" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -16,17 +16,21 @@
   
     <meta name="keywords" content="" />
   
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="1. Linux 磁盘查看和分区类1.1   du 查看文件和目录占用的磁盘空间du: disk usage 磁盘占用情况  基本语法123456789101112du 目录&#x2F;文件 （显示目录下每个子目录的磁盘使用情况）-h          以较易阅读的 GBytes, MBytes, KBytes 等格式自行-a          不仅查看子目录大小，还要包括文件-c          显示所">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2022/09/26/hello-world/index.html">
+<meta property="og:title" content="Linux学习-7">
+<meta property="og:url" content="http://example.com/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-7/index.html">
 <meta property="og:site_name" content="荒凉院子">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="1. Linux 磁盘查看和分区类1.1   du 查看文件和目录占用的磁盘空间du: disk usage 磁盘占用情况  基本语法123456789101112du 目录&#x2F;文件 （显示目录下每个子目录的磁盘使用情况）-h          以较易阅读的 GBytes, MBytes, KBytes 等格式自行-a          不仅查看子目录大小，还要包括文件-c          显示所">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-09-26T06:54:35.497Z">
-<meta property="article:modified_time" content="2022-09-23T09:30:32.569Z">
+<meta property="og:image" content="http://example.com/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-7/6-4.jpg">
+<meta property="og:image" content="http://example.com/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-7/6-5.jpg">
+<meta property="og:image" content="http://example.com/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-7/6-6.jpg">
+<meta property="article:published_time" content="2022-10-19T03:28:31.000Z">
+<meta property="article:modified_time" content="2022-10-19T06:25:14.274Z">
 <meta property="article:author" content="韩 亮">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-7/6-4.jpg">
   
   <!-- 站点验证相关 -->
   
@@ -147,15 +151,15 @@
 
             <article itemscope itemtype="https://schema.org/Article">
     
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-7/">
     <div class="kratos-hentry kratos-post-inner clearfix">
         <header class="kratos-entry-header">
             
-                <h1 class="kratos-entry-title text-center" itemprop="name headline">Hello World</h1>
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">Linux学习-7</h1>
             
             
             <ul class="kratos-post-meta text-center">
-                <li><time datetime="2022-09-26T06:54:35.497Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2022-09-26</time></li>
+                <li><time datetime="2022-10-19T03:28:31.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2022-10-19</time></li>
                 <li itemprop="author" itemscope itemtype="https://schema.org/Person">
                     <i class="fa fa-user"></i> 作者 <span itemprop="name">韩 亮</span>
                 </li>
@@ -163,7 +167,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        444
+                        ~2.25K
                     
                     字
                 </li>
@@ -174,25 +178,46 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1663925432569"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1666160714274"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
             <hr />
-            <div itemprop="articleBody"><p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+            <div itemprop="articleBody"><h2 id="1-Linux-磁盘查看和分区类"><a href="#1-Linux-磁盘查看和分区类" class="headerlink" title="1. Linux 磁盘查看和分区类"></a>1. Linux 磁盘查看和分区类</h2><h4 id="1-1-du-查看文件和目录占用的磁盘空间"><a href="#1-1-du-查看文件和目录占用的磁盘空间" class="headerlink" title="1.1   du 查看文件和目录占用的磁盘空间"></a>1.1   du 查看文件和目录占用的磁盘空间</h4><p>du: disk usage 磁盘占用情况</p>
+<ul>
+<li>基本语法<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">du 目录/文件 （显示目录下每个子目录的磁盘使用情况）</span><br><span class="line">-h          以较易阅读的 GBytes, MBytes, KBytes 等格式自行</span><br><span class="line">-a          不仅查看子目录大小，还要包括文件</span><br><span class="line">-c          显示所有的文件和子目录大小后，显示总和</span><br><span class="line">-s          只显示总和</span><br><span class="line">--max-depth=n 指定统计子目录的深度为第 n 层</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---------</span><br><span class="line">du -sh </span><br><span class="line">(查看当前用户主目录占用的磁盘空间大小)</span><br></pre></td></tr></table></figure>
+<h4 id="1-2-df-查看磁盘空间使用情况"><a href="#1-2-df-查看磁盘空间使用情况" class="headerlink" title="1.2  df 查看磁盘空间使用情况"></a>1.2  df 查看磁盘空间使用情况</h4></li>
+</ul>
+<p>df: disk free 空余磁盘</p>
+<ul>
+<li>基本语法<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">df 选项 （列出文件系统的整体磁盘使用量，检查文件系统的磁盘空间占用情况）</span><br><span class="line"></span><br><span class="line">-h      以较易阅读的 GBytes, MBytes, KBytes 等格式自行显示</span><br><span class="line"></span><br><span class="line">df -h </span><br><span class="line">(查看磁盘使用情况)</span><br><span class="line"></span><br><span class="line"><span class="section">#### 1.3  lsblk 查看设备挂载情况</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 基本语法</span><br><span class="line"></span><br><span class="line">lsblk （查看设备挂载情况）</span><br><span class="line"></span><br><span class="line">-f 查看详细的设备挂载情况，显示文件系统信息</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="1-4-mount-umount-挂载-卸载"><a href="#1-4-mount-umount-挂载-卸载" class="headerlink" title="1.4  mount/umount 挂载/卸载"></a>1.4  mount/umount 挂载/卸载</h4><ul>
+<li><p>对于Linux用户来讲，不论有几个分区，分别分给哪一个目录使用，它总归就是一个根<br>目录、一个独立且唯一的文件结构。</p>
+</li>
+<li><p>Linux中每个分区都是用来组成整个文件系统的一部分，它在用一种叫做“挂载”的处理<br>方法，它整个文件系统中包含了一整套的文件和目录，并将一个分区和一个目录联系起来，<br>要载入的那个分区将使它的存储空间在这个目录下获得</p>
+</li>
+<li><p>挂载前准备（必须要有光盘或者已经连接镜像文件）</p>
+</li>
+</ul>
+<p><img src="/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-7/6-4.jpg" alt="vm中设置">  </p>
+<p><img src="/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-7/6-5.jpg" alt=" 挂载镜像文件">  </p>
+<ul>
+<li>基本语法</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mount [-t vfstype] [-o options] device dir （挂载设备）</span><br><span class="line">umount 设备文件名或挂载点 （卸载设备)</span><br><span class="line"></span><br><span class="line">-t vfstype 指定文件系统的类型，通常不必指定。mount 会自动选择正确的类型。常用类型有：</span><br><span class="line"><span class="code">                                光盘或光盘镜像：iso9660</span></span><br><span class="line"><span class="code">                                DOS fat16 文件系统：msdos</span></span><br><span class="line"><span class="code">                                Windows 9x fat32 文件系统：vfat</span></span><br><span class="line"><span class="code">                                Windows NT ntfs 文件系统：ntfs</span></span><br><span class="line"><span class="code">                                Mount Windows 文件网络共享：smbfs</span></span><br><span class="line"><span class="code">                                UNIX(LINUX) 文件网络共享：nfs</span></span><br><span class="line"><span class="code">-o options 主要用来描述设备或档案的挂接方式。常用的参数有：</span></span><br><span class="line"><span class="code">                                loop：用来把一个文件当成硬盘分区挂接上系统</span></span><br><span class="line"><span class="code">                                ro：采用只读方式挂接设备</span></span><br><span class="line"><span class="code">                                rw：采用读写方式挂接设备</span></span><br><span class="line"><span class="code">                                iocharset：指定访问文件系统所用字符集</span></span><br><span class="line"><span class="code">device       要挂接(mount)的设备</span></span><br><span class="line"><span class="code">dir             设备在系统上的挂接点(mount point)</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---------</span><br><span class="line">mkdir /mnt/cdrom      (建立挂载点)</span><br><span class="line">mount -t iso9660   /dev/cdrom/mnt/cdrom         (设备/dev/cdrom)</span><br><span class="line">(挂载光盘镜像文件)</span><br><span class="line">unmount /mnt/cdrom </span><br><span class="line">(卸载光盘镜像文件)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>开机自动挂载    vi /etc/fstab</li>
+</ul>
+<p><img src="/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-7/6-6.jpg" alt="设置开机自动挂载"></p>
+<ul>
+<li>添加红框中内容，保存退出</li>
+</ul>
+<h4 id="1-5-fdisk-分区"><a href="#1-5-fdisk-分区" class="headerlink" title="1.5  fdisk 分区"></a>1.5  fdisk 分区</h4><p>该命令必须在 root 用户下才能使用</p>
+<ul>
+<li>基本语法<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l                    （查看磁盘分区详情）</span><br><span class="line">fdisk 硬盘设备名            （对新增硬盘进行分区操作)</span><br><span class="line"></span><br><span class="line">-l                          显示所有硬盘的分区列表</span><br><span class="line"></span><br><span class="line">（1）Linux 分区</span><br><span class="line"><span class="code">                Device：分区序列</span></span><br><span class="line"><span class="code">                Boot：引导</span></span><br><span class="line"><span class="code">                Start：从X磁柱开始</span></span><br><span class="line"><span class="code">                End：到Y磁柱结束</span></span><br><span class="line"><span class="code">                Blocks：容量</span></span><br><span class="line"><span class="code">                Id：分区类型ID</span></span><br><span class="line"><span class="code">                System：分区类型</span></span><br><span class="line"><span class="code">（2）分区操作按键说明</span></span><br><span class="line"><span class="code">                m：显示命令列表</span></span><br><span class="line"><span class="code">                p：显示当前磁盘分区</span></span><br><span class="line"><span class="code">                n：新增分区</span></span><br><span class="line"><span class="code">                w：写入分区信息并退出</span></span><br><span class="line"><span class="code">                q：不保存分区信息直接退出</span></span><br></pre></td></tr></table></figure></li>
+</ul>
 </div>
         </div>
         
@@ -246,7 +271,7 @@
     <script type="text/javascript">
         $(()=>{
             new QRCode("wechat-qr", {
-                text: "http://example.com/2022/09/26/hello-world/",
+                text: "http://example.com/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-7/",
                 width: 150,
                 height: 150,
                 correctLevel : QRCode.CorrectLevel.H
@@ -258,9 +283,11 @@
             const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
-            const hostUrl       = "http://example.com/2022/09/26/hello-world/";
-            const title         = "「Hello World」";
-            const excerpt       = `Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using ...`;
+            const hostUrl       = "http://example.com/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-7/";
+            const title         = "「Linux学习-7」";
+            const excerpt       = `1. Linux 磁盘查看和分区类1.1   du 查看文件和目录占用的磁盘空间du: disk usage 磁盘占用情况
+
+基本语法123456789101112du 目录/文件 （显示目录下每个子目录的磁盘使用情况）-h     ...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -282,7 +309,7 @@
                     
                 </div>
                 <div class="pull-date">
-                    <time datetime="2022-09-23T09:30:32.569Z" itemprop="dateModified">最后编辑：2022-09-23</time>
+                    <time datetime="2022-10-19T06:25:14.274Z" itemprop="dateModified">最后编辑：2022-10-19</time>
                 </div>
             </div>
         </footer>
@@ -290,10 +317,10 @@
     
         <nav class="navigation post-navigation clearfix" role="navigation">
             
-            
-            <div class="nav-next clearfix">
-                <a title=" test_git" href="/2022/09/26/test-git/">下一篇 &gt;</a>
+            <div class="nav-previous clearfix">
+                <a title=" Linux学习-6" href="/2022/10/18/Linux学习-6/">&lt; 上一篇</a>
             </div>
+            
             
         </nav>
     
