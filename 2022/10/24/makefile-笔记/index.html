@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  
+  
+  <title>makefile-笔记 | 荒凉院子</title>
+  <meta name="author" content="韩 亮" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="" />
+  
+  <meta name="description" content="{1.快速编译基础，2.生成多个程序的Makefile 3. 生成驱动模块的Makefile} 1. 快速编译基础 makefile生成可执行程序 -  make脚本生成多个可执行文件 make 工程管理器，也称“自动编译管理器”  读入Makefile文件编辑内容来执行具体编译工作 根据文件时间戳自动发现更新过的文件 只编译改动的代码文件，而不用完全编译  1234567Makefile 是 M">
+<meta property="og:type" content="article">
+<meta property="og:title" content="makefile-笔记">
+<meta property="og:url" content="http://example.com/2022/10/24/makefile-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="荒凉院子">
+<meta property="og:description" content="{1.快速编译基础，2.生成多个程序的Makefile 3. 生成驱动模块的Makefile} 1. 快速编译基础 makefile生成可执行程序 -  make脚本生成多个可执行文件 make 工程管理器，也称“自动编译管理器”  读入Makefile文件编辑内容来执行具体编译工作 根据文件时间戳自动发现更新过的文件 只编译改动的代码文件，而不用完全编译  1234567Makefile 是 M">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/10/24/makefile-%E7%AC%94%E8%AE%B0/7-1.jpg">
+<meta property="article:published_time" content="2022-10-24T06:33:16.000Z">
+<meta property="article:modified_time" content="2022-11-11T07:58:38.153Z">
+<meta property="article:author" content="韩 亮">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/10/24/makefile-%E7%AC%94%E8%AE%B0/7-1.jpg">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('/images/banner.webp');
+      }
+    
+    
+      @media(min-width:768px) {
+        body.custom-background {
+          background-image: url('/images/bg.webp');
+        }
+      }
+    
+  </style>
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                    
+                                        
+                                            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                        
+                                    
+                                        
+                                            <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                        
+                                    
+                                        
+                                            <li><a href="/friends/"><i class="fa fa-paw"></i>好伙伴</a></li>
+                                        
+                                    
+                                        
+                                            <li><a target="_blank" rel="noopener" href="https://github.com/han742639653"></a></li>
+                                        
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">荒凉院子</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>荒凉院子</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/24/makefile-%E7%AC%94%E8%AE%B0/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">makefile-笔记</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2022-10-24T06:33:16.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2022-10-24</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">韩 亮</span>
+                </li>
+                <li>
+                    <i class="fa fa-edit"></i> 
+                    
+                    
+                        ~3.88K
+                    
+                    字
+                </li>
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1668153518153"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+            <hr />
+            <div itemprop="articleBody"><p>{1.快速编译基础，2.生成多个程序的Makefile 3. 生成驱动模块的Makefile}</p>
+<h2 id="1-快速编译基础"><a href="#1-快速编译基础" class="headerlink" title="1. 快速编译基础"></a>1. 快速编译基础</h2><ul>
+<li>makefile生成可执行程序 -</li>
+</ul>
+<p>make脚本生成多个可执行文件</p>
+<p>make 工程管理器，也称“自动编译管理器”</p>
+<ul>
+<li>读入Makefile文件编辑内容来执行具体编译工作</li>
+<li>根据文件时间戳自动发现更新过的文件</li>
+<li>只编译改动的代码文件，而不用完全编译</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Makefile 是 Make 读入的唯一配置文件</span><br><span class="line">target:dependency<span class="emphasis">_files(依赖)</span></span><br><span class="line"><span class="emphasis"><span class="language-xml"><span class="tag">&lt;<span class="name">TAB</span>&gt;</span></span>command</span></span><br><span class="line"><span class="emphasis">例如：</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">hello.o : hello.c hello.h</span></span><br><span class="line"><span class="emphasis">    gcc -c hello.c -o hello.o</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>由make工具创建的目标体（target），通常是目标文件或可执行文件</p>
+</li>
+<li><p>要创建的目标体所依赖的文件（dependency_file）</p>
+</li>
+<li><p>创建每个目标体时需要运行的命令(command)</p>
+</li>
+<li><p>命令行前面必须是一个“TAB键”，否则编译错误为：***missing sepaeator.Stop</p>
+</li>
+</ul>
+<p><img src="/2022/10/24/makefile-%E7%AC%94%E8%AE%B0/7-1.jpg" alt="目标文件目录"></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Makefile 基础版格式</span><br><span class="line"></span><br><span class="line">test: f1.o f2.o main.o</span><br><span class="line"><span class="code">    gcc f1.o f2.o main.o -o test</span></span><br><span class="line"><span class="code">main.o: main.c head.h</span></span><br><span class="line"><span class="code">    gcc -c -Wall main.c -o main.o</span></span><br><span class="line"><span class="code">f1.o:f1.c</span></span><br><span class="line"><span class="code">    gcc -c -Wall f1.c -o f1.o</span></span><br><span class="line"><span class="code">f2.o:f2.c</span></span><br><span class="line"><span class="code">    gcc -c -Wall f2.c -o f2.o</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Makefile 变量<br>Make允许在Makefile中创建和使用变量，变量在Makefile中定义的一些名字，用来替代一个文本字符串，该文本字符串称为该变量的值</li>
+<li>用户自定义变量/预定义变量/自动变量/环境变量</li>
+<li>例如 src= fun1.c fun2.c   <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  符号  调用  $(src)   调用src</span><br></pre></td></tr></table></figure></li>
+<li>自定义变量： 其值由用户自行设定，（变量的值可以用来代替目标体，依赖文件，命令以及Makefile文件中的其他部分）</li>
+<li>两种方式</li>
+<li>递归展开方式<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">foo=$(bar)</span><br><span class="line">bar=$(ugh)</span><br><span class="line">ugh=Huh?</span><br></pre></td></tr></table></figure></li>
+<li>简单扩展方式<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">m :=mm</span><br><span class="line">x :=$(x)bar</span><br><span class="line">y:=$(x)bar</span><br><span class="line">X:=later </span><br><span class="line"></span><br><span class="line">‘+=’ 符号是在原有的基础上加上一个值（在原有基础上赋值添加）</span><br><span class="line">eg：A=a</span><br><span class="line"><span class="code">    A+=b   等同于 A=a+b</span></span><br></pre></td></tr></table></figure></li>
+<li>自动变量：用于代表编译语句中出现的目标文件和依赖文件，具有本地含义</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">常见自动变量</span><br><span class="line">$&lt; 第一个依赖文件的名称</span><br><span class="line">$@ 目标文件的完整名称</span><br><span class="line">$^ 所有不重复的目标依赖文件，以空格分开</span><br><span class="line">$? 所有时间戳比目标文件晚的依赖文件，并以空格分开</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>预定义变量：预先定义的常见编译器，汇编器的名称及编译选项</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CC              C编译器的名称，默认值CC  （gcc）</span><br><span class="line">RM              文件删除程序的名称，默认值为 rm -f</span><br><span class="line">CFLAGS          C编译器的选项，无默认值</span><br><span class="line">AR              库文件维护程序的名称，默认值为ar</span><br><span class="line">CPP             C预编译器的名称，默认值为$(CC) -E</span><br><span class="line">CPPFLAGS        C预编译的选项，无默认值</span><br></pre></td></tr></table></figure>
+<ul>
+<li>make clean</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">用户可以在一个Makefile中定义一些和编译无关的命令，（程序的打包，备份和删除等）</span><br><span class="line"></span><br><span class="line">.PHONY 说明伪目标</span><br><span class="line">eg: Makefile 中添加如下</span><br><span class="line">.PHONY :clean</span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line"><span class="code">      -rm f1.o f2.o main.o test</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">使用格式： make clean</span><br></pre></td></tr></table></figure>
+<ul>
+<li>make 隐含规则<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1: 编译C程序的隐含规则 &quot;&lt;n&gt;.o&quot; 目标的依赖目标会自动推导为&quot;&lt;n&gt;.c&quot;</span><br><span class="line">2: 链接Object文件的隐含规则&quot;&lt;n&gt;&quot;目标的依赖目标会自动推导为&quot;&lt;n&gt;.o&quot;</span><br></pre></td></tr></table></figure></li>
+<li>嵌套的makefile案例<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@echo $(SUBDIRS)</span><br><span class="line">    让ehco显示提示</span><br><span class="line">@(RM)</span><br><span class="line">    预定义变量， rm -f</span><br><span class="line">make -C $@</span><br><span class="line">    读入指定目录下的makefile</span><br><span class="line">export CC OBJS BIN OBJS_DIR BIN_DIR</span><br><span class="line">    让子makefile可以找到使用这些变量</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>改进后的makefile<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">OBJS=f1.o f2.o main.o     //自定义变量（可以是c,也可以是O）</span><br><span class="line">CFLAGS= -c -O -g -Wall      //gcc的参数</span><br><span class="line"></span><br><span class="line">main:$(OBJS)</span><br><span class="line">.PHONY:claen             //伪目标</span><br><span class="line">clean:</span><br><span class="line">      -rm $(OBJS) main</span><br></pre></td></tr></table></figure></li>
+<li>make 工具使用参数<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">make 带选项</span><br><span class="line">-C dir读入指定目录下的Makefile  （多个目录下多个makefile）</span><br><span class="line">-f file读入当前目录下的file文件作为Makefile</span><br><span class="line">-i 忽略所有的命令执行错误</span><br><span class="line">-l dir指定被包含的Makefile所在目录</span><br><span class="line">-n 只打印要执行的命令,但不执行这些命令(预演，检查功能)</span><br><span class="line">-P 显示make变量数据库和隐含规则</span><br><span class="line">-s 在执行命令时不显示命令</span><br><span class="line">-W 如果make在执行过程中改变目录，打印当前目录名</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="2-生成多个程序的Makefile"><a href="#2-生成多个程序的Makefile" class="headerlink" title="2 . 生成多个程序的Makefile"></a>2 . 生成多个程序的Makefile</h2><ul>
+<li>all:server client   //(all 来说明将生成的可执行程序/目标)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">CC=gcc    //（可以不写）</span><br><span class="line">DEBUG= -g -O0 -Wall</span><br><span class="line">CFLAGS += $(DEBUG)</span><br><span class="line"></span><br><span class="line">#设置创建文件规则，所有.c文件对应一个同名的无后缀文件(无.c后缀)</span><br><span class="line">OBJS=$&#123;patsubst %.c,%,$&#123;wildcard *.c&#125;&#125;//把当前目录下同名.c文件替换，不加.c</span><br><span class="line"># OBJS=server client</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#根据创建文件规则,利用默认编译规则产生可执行文件</span><br><span class="line">all:$(OBJS)</span><br><span class="line">.PHONY:clean</span><br><span class="line">clean:</span><br><span class="line">       -rm -f *.o $(OBJS) core</span><br><span class="line">       //命令前是tab键</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="3-生成驱动模块的Makefile"><a href="#3-生成驱动模块的Makefile" class="headerlink" title="3 生成驱动模块的Makefile"></a>3 生成驱动模块的Makefile</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">ifeq($(KERNELRELEASE),)</span><br><span class="line">KERNELDIR？=目标板Linux内核源码顶层目录的绝对路径</span><br><span class="line">ROOTFS？=目标板根文件系统顶层目录的绝对路径</span><br><span class="line">//.ko文件是驱动文件</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PWD:=$(shell pwd)//列出当前路径（调用shell命令pwd）</span><br><span class="line"></span><br><span class="line">modules:</span><br><span class="line">        make -C $(KERNELDIR) M=$(PWD)modules</span><br><span class="line">modules:</span><br><span class="line">        make -C $(KERNELDIR)M=$(PWD)INSTALL_MOD_PATH=$(ROOTFS)modules_install</span><br><span class="line">clean:</span><br><span class="line">        rm -rf *.o *.ko .*.cmd *.mod.* modules.order Module.symvers .tmp_versions</span><br><span class="line"></span><br><span class="line">else</span><br><span class="line">obj-m += hello.o</span><br><span class="line"></span><br><span class="line">#用obj-m 来指定模块名,注意模块名加.o 而不是.ko, 与源码文件同名</span><br><span class="line"></span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#obj-m += test.o</span><br><span class="line">#test-objs=test.o fun.o</span><br><span class="line">#用模块名 -objs变量 来指定编译到ko中的所有.0文件名 （每个同名的.c文件对应的.o目标文件）</span><br></pre></td></tr></table></figure>
+<ul>
+<li>升级版<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">APP_NAME=hello_test</span><br><span class="line">//生成可执行文件的名字</span><br><span class="line">ifeq ($ (KERNELRELEASE),)</span><br><span class="line">ifeq($(ARCH),arm)</span><br><span class="line">KERNELDIR?=目标板linux内核源码顶层目录的绝对路径</span><br><span class="line">ROOTFS?=目标板根文件系统顶层目录的绝对路径</span><br><span class="line">CROSS_COMPILE=ubuntu上交叉工具链的绝对路径/gcc-4.6.4/bin/arm-none-linux-guneabicc=$(CROSS_COMPILE)gcc</span><br><span class="line">//板子上交叉工具的源码路径链</span><br><span class="line">else</span><br><span class="line">KERNELDIR?=/lib/modules/$(shell uname -r)/build</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">PWD:=$(shell pwd)</span><br><span class="line"></span><br><span class="line">modules:</span><br><span class="line">        $(MAKE) -C $(KERNELDIR) M=$(PWD)modules</span><br><span class="line">        $(cc)$(APP_NAME).c -o $(APP_NAME)//调用交叉工具链</span><br><span class="line">modules_install:</span><br><span class="line">        $(MAKE) -C $(KERNELIR)M=%(PWD)INSTALL_MOD_PATH=$(ROOTFS)modules_install</span><br><span class="line">clean:</span><br><span class="line">        $(MAKE) -C %(KERNEL_DIR)M=$(CUR_DIR)clean</span><br><span class="line"></span><br><span class="line">else</span><br><span class="line"></span><br><span class="line">obj-m +=hello.o</span><br><span class="line">endif</span><br></pre></td></tr></table></figure></li>
+</ul>
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "http://example.com/2022/10/24/makefile-%E7%AC%94%E8%AE%B0/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "http://example.com/2022/10/24/makefile-%E7%AC%94%E8%AE%B0/";
+            const title         = "「makefile-笔记」";
+            const excerpt       = `{1.快速编译基础，2.生成多个程序的Makefile 3. 生成驱动模块的Makefile}
+1. 快速编译基础
+makefile生成可执行程序 -
+
+make脚本生成多个可执行文件
+make 工程管理器，也称“自动编译管理器”
+
+...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    
+                </div>
+                <div class="pull-date">
+                    <time datetime="2022-11-11T07:58:38.153Z" itemprop="dateModified">最后编辑：2022-11-11</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" c++笔记-1" href="/2022/10/22/c-笔记-1/">&lt; 上一篇</a>
+            </div>
+            
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/2.webp" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                15
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                0
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                2
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 0.6em;">测试</a> <a href="/tags/%E8%87%AA%E5%AD%A6/" style="font-size: 0.8em;">自学</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2022/10/24/makefile-%E7%AC%94%E8%AE%B0/"><i class="fa  fa-book"></i> makefile-笔记</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/10/22/c-%E7%AC%94%E8%AE%B0-1/"><i class="fa  fa-book"></i> c++笔记-1</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/10/20/tx2%E7%AC%94%E8%AE%B0-1/"><i class="fa  fa-book"></i> tx2笔记-1</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-9/"><i class="fa  fa-book"></i> Linux学习-9</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-8/"><i class="fa  fa-book"></i> Linux学习-8</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2022 荒凉院子 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by 韩 亮.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/vendors/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
