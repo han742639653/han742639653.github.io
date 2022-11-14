@@ -16,16 +16,16 @@
   
     <meta name="keywords" content="" />
   
-  <meta name="description" content="{1.快速编译基础，2.生成多个程序的Makefile 3. 生成驱动模块的Makefile} 1. 快速编译基础 makefile生成可执行程序 -  make脚本生成多个可执行文件 make 工程管理器，也称“自动编译管理器”  读入Makefile文件编辑内容来执行具体编译工作 根据文件时间戳自动发现更新过的文件 只编译改动的代码文件，而不用完全编译  1234567Makefile 是 M">
+  <meta name="description" content="{1.快速编译基础，2.生成多个程序的Makefile 3. 生成驱动模块的Makefile} 1. 快速编译基础makefile生成可执行程序 - make脚本生成多个可执行文件 make 工程管理器，也称“自动编译管理器”  读入Makefile文件编辑内容来执行具体编译工作 根据文件时间戳自动发现更新过的文件 只编译改动的代码文件，而不用完全编译  1234567Makefile 是 Mak">
 <meta property="og:type" content="article">
 <meta property="og:title" content="makefile-笔记">
 <meta property="og:url" content="http://example.com/2022/10/24/makefile-%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="荒凉院子">
-<meta property="og:description" content="{1.快速编译基础，2.生成多个程序的Makefile 3. 生成驱动模块的Makefile} 1. 快速编译基础 makefile生成可执行程序 -  make脚本生成多个可执行文件 make 工程管理器，也称“自动编译管理器”  读入Makefile文件编辑内容来执行具体编译工作 根据文件时间戳自动发现更新过的文件 只编译改动的代码文件，而不用完全编译  1234567Makefile 是 M">
+<meta property="og:description" content="{1.快速编译基础，2.生成多个程序的Makefile 3. 生成驱动模块的Makefile} 1. 快速编译基础makefile生成可执行程序 - make脚本生成多个可执行文件 make 工程管理器，也称“自动编译管理器”  读入Makefile文件编辑内容来执行具体编译工作 根据文件时间戳自动发现更新过的文件 只编译改动的代码文件，而不用完全编译  1234567Makefile 是 Mak">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2022/10/24/makefile-%E7%AC%94%E8%AE%B0/7-1.jpg">
 <meta property="article:published_time" content="2022-10-24T06:33:16.000Z">
-<meta property="article:modified_time" content="2022-11-11T07:58:38.153Z">
+<meta property="article:modified_time" content="2022-11-14T01:45:11.554Z">
 <meta property="article:author" content="韩 亮">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2022/10/24/makefile-%E7%AC%94%E8%AE%B0/7-1.jpg">
@@ -165,7 +165,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        ~3.88K
+                        ~3.92K
                     
                     字
                 </li>
@@ -176,16 +176,14 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1668153518153"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1668390311554"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
             <hr />
             <div itemprop="articleBody"><p>{1.快速编译基础，2.生成多个程序的Makefile 3. 生成驱动模块的Makefile}</p>
-<h2 id="1-快速编译基础"><a href="#1-快速编译基础" class="headerlink" title="1. 快速编译基础"></a>1. 快速编译基础</h2><ul>
-<li>makefile生成可执行程序 -</li>
-</ul>
+<h2 id="1-快速编译基础"><a href="#1-快速编译基础" class="headerlink" title="1. 快速编译基础"></a>1. 快速编译基础</h2><p>makefile生成可执行程序 -</p>
 <p>make脚本生成多个可执行文件</p>
 <p>make 工程管理器，也称“自动编译管理器”</p>
 <ul>
@@ -209,11 +207,20 @@
 <ul>
 <li>Makefile 变量<br>Make允许在Makefile中创建和使用变量，变量在Makefile中定义的一些名字，用来替代一个文本字符串，该文本字符串称为该变量的值</li>
 <li>用户自定义变量/预定义变量/自动变量/环境变量</li>
-<li>例如 src= fun1.c fun2.c   <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  符号  调用  $(src)   调用src</span><br></pre></td></tr></table></figure></li>
+<li>例如 src= fun1.c fun2.c  </li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  符号  调用  $(src)   调用src</span><br></pre></td></tr></table></figure>
+<ul>
 <li>自定义变量： 其值由用户自行设定，（变量的值可以用来代替目标体，依赖文件，命令以及Makefile文件中的其他部分）</li>
 <li>两种方式</li>
-<li>递归展开方式<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">foo=$(bar)</span><br><span class="line">bar=$(ugh)</span><br><span class="line">ugh=Huh?</span><br></pre></td></tr></table></figure></li>
-<li>简单扩展方式<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">m :=mm</span><br><span class="line">x :=$(x)bar</span><br><span class="line">y:=$(x)bar</span><br><span class="line">X:=later </span><br><span class="line"></span><br><span class="line">‘+=’ 符号是在原有的基础上加上一个值（在原有基础上赋值添加）</span><br><span class="line">eg：A=a</span><br><span class="line"><span class="code">    A+=b   等同于 A=a+b</span></span><br></pre></td></tr></table></figure></li>
+<li>递归展开方式</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">foo=$(bar)</span><br><span class="line">bar=$(ugh)</span><br><span class="line">ugh=Huh?</span><br></pre></td></tr></table></figure>
+<ul>
+<li>简单扩展方式</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">m :=mm</span><br><span class="line">x :=$(x)bar</span><br><span class="line">y:=$(x)bar</span><br><span class="line">X:=later </span><br><span class="line"></span><br><span class="line">‘+=’ 符号是在原有的基础上加上一个值（在原有基础上赋值添加）</span><br><span class="line">eg：A=a</span><br><span class="line"><span class="code">    A+=b   等同于 A=a+b</span></span><br></pre></td></tr></table></figure>
+<ul>
 <li>自动变量：用于代表编译语句中出现的目标文件和依赖文件，具有本地含义</li>
 </ul>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">常见自动变量</span><br><span class="line">$&lt; 第一个依赖文件的名称</span><br><span class="line">$@ 目标文件的完整名称</span><br><span class="line">$^ 所有不重复的目标依赖文件，以空格分开</span><br><span class="line">$? 所有时间戳比目标文件晚的依赖文件，并以空格分开</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -226,11 +233,16 @@
 </ul>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">用户可以在一个Makefile中定义一些和编译无关的命令，（程序的打包，备份和删除等）</span><br><span class="line"></span><br><span class="line">.PHONY 说明伪目标</span><br><span class="line">eg: Makefile 中添加如下</span><br><span class="line">.PHONY :clean</span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line"><span class="code">      -rm f1.o f2.o main.o test</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">使用格式： make clean</span><br></pre></td></tr></table></figure>
 <ul>
-<li>make 隐含规则<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1: 编译C程序的隐含规则 &quot;&lt;n&gt;.o&quot; 目标的依赖目标会自动推导为&quot;&lt;n&gt;.c&quot;</span><br><span class="line">2: 链接Object文件的隐含规则&quot;&lt;n&gt;&quot;目标的依赖目标会自动推导为&quot;&lt;n&gt;.o&quot;</span><br></pre></td></tr></table></figure></li>
-<li>嵌套的makefile案例<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@echo $(SUBDIRS)</span><br><span class="line">    让ehco显示提示</span><br><span class="line">@(RM)</span><br><span class="line">    预定义变量， rm -f</span><br><span class="line">make -C $@</span><br><span class="line">    读入指定目录下的makefile</span><br><span class="line">export CC OBJS BIN OBJS_DIR BIN_DIR</span><br><span class="line">    让子makefile可以找到使用这些变量</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li>改进后的makefile<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">OBJS=f1.o f2.o main.o     //自定义变量（可以是c,也可以是O）</span><br><span class="line">CFLAGS= -c -O -g -Wall      //gcc的参数</span><br><span class="line"></span><br><span class="line">main:$(OBJS)</span><br><span class="line">.PHONY:claen             //伪目标</span><br><span class="line">clean:</span><br><span class="line">      -rm $(OBJS) main</span><br></pre></td></tr></table></figure></li>
-<li>make 工具使用参数<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">make 带选项</span><br><span class="line">-C dir读入指定目录下的Makefile  （多个目录下多个makefile）</span><br><span class="line">-f file读入当前目录下的file文件作为Makefile</span><br><span class="line">-i 忽略所有的命令执行错误</span><br><span class="line">-l dir指定被包含的Makefile所在目录</span><br><span class="line">-n 只打印要执行的命令,但不执行这些命令(预演，检查功能)</span><br><span class="line">-P 显示make变量数据库和隐含规则</span><br><span class="line">-s 在执行命令时不显示命令</span><br><span class="line">-W 如果make在执行过程中改变目录，打印当前目录名</span><br></pre></td></tr></table></figure></li>
+<li>make 隐含规则</li>
 </ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1: 编译C程序的隐含规则 &quot;&lt;n&gt;.o&quot; 目标的依赖目标会自动推导为&quot;&lt;n&gt;.c&quot;</span><br><span class="line">2: 链接Object文件的隐含规则&quot;&lt;n&gt;&quot;目标的依赖目标会自动推导为&quot;&lt;n&gt;.o&quot;</span><br></pre></td></tr></table></figure>
+<p>嵌套的makefile案例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@echo $(SUBDIRS)</span><br><span class="line">    让ehco显示提示</span><br><span class="line">@(RM)</span><br><span class="line">    预定义变量， rm -f</span><br><span class="line">make -C $@</span><br><span class="line">    读入指定目录下的makefile</span><br><span class="line">export CC OBJS BIN OBJS_DIR BIN_DIR</span><br><span class="line">    让子makefile可以找到使用这些变量</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>改进后的makefile</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">OBJS=f1.o f2.o main.o     //自定义变量（可以是c,也可以是O）</span><br><span class="line">CFLAGS= -c -O -g -Wall      //gcc的参数</span><br><span class="line"></span><br><span class="line">main:$(OBJS)</span><br><span class="line">.PHONY:claen             //伪目标</span><br><span class="line">clean:</span><br><span class="line">      -rm $(OBJS) main</span><br></pre></td></tr></table></figure>
+<p>make 工具使用参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">make 带选项</span><br><span class="line">-C dir读入指定目录下的Makefile  （多个目录下多个makefile）</span><br><span class="line">-f file读入当前目录下的file文件作为Makefile</span><br><span class="line">-i 忽略所有的命令执行错误</span><br><span class="line">-l dir指定被包含的Makefile所在目录</span><br><span class="line">-n 只打印要执行的命令,但不执行这些命令(预演，检查功能)</span><br><span class="line">-P 显示make变量数据库和隐含规则</span><br><span class="line">-s 在执行命令时不显示命令</span><br><span class="line">-W 如果make在执行过程中改变目录，打印当前目录名</span><br></pre></td></tr></table></figure>
+
 <h2 id="2-生成多个程序的Makefile"><a href="#2-生成多个程序的Makefile" class="headerlink" title="2 . 生成多个程序的Makefile"></a>2 . 生成多个程序的Makefile</h2><ul>
 <li>all:server client   //(all 来说明将生成的可执行程序/目标)</li>
 </ul>
@@ -239,8 +251,10 @@
 
 <h2 id="3-生成驱动模块的Makefile"><a href="#3-生成驱动模块的Makefile" class="headerlink" title="3 生成驱动模块的Makefile"></a>3 生成驱动模块的Makefile</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">ifeq($(KERNELRELEASE),)</span><br><span class="line">KERNELDIR？=目标板Linux内核源码顶层目录的绝对路径</span><br><span class="line">ROOTFS？=目标板根文件系统顶层目录的绝对路径</span><br><span class="line">//.ko文件是驱动文件</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PWD:=$(shell pwd)//列出当前路径（调用shell命令pwd）</span><br><span class="line"></span><br><span class="line">modules:</span><br><span class="line">        make -C $(KERNELDIR) M=$(PWD)modules</span><br><span class="line">modules:</span><br><span class="line">        make -C $(KERNELDIR)M=$(PWD)INSTALL_MOD_PATH=$(ROOTFS)modules_install</span><br><span class="line">clean:</span><br><span class="line">        rm -rf *.o *.ko .*.cmd *.mod.* modules.order Module.symvers .tmp_versions</span><br><span class="line"></span><br><span class="line">else</span><br><span class="line">obj-m += hello.o</span><br><span class="line"></span><br><span class="line">#用obj-m 来指定模块名,注意模块名加.o 而不是.ko, 与源码文件同名</span><br><span class="line"></span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#obj-m += test.o</span><br><span class="line">#test-objs=test.o fun.o</span><br><span class="line">#用模块名 -objs变量 来指定编译到ko中的所有.0文件名 （每个同名的.c文件对应的.o目标文件）</span><br></pre></td></tr></table></figure>
 <ul>
-<li>升级版<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">APP_NAME=hello_test</span><br><span class="line">//生成可执行文件的名字</span><br><span class="line">ifeq ($ (KERNELRELEASE),)</span><br><span class="line">ifeq($(ARCH),arm)</span><br><span class="line">KERNELDIR?=目标板linux内核源码顶层目录的绝对路径</span><br><span class="line">ROOTFS?=目标板根文件系统顶层目录的绝对路径</span><br><span class="line">CROSS_COMPILE=ubuntu上交叉工具链的绝对路径/gcc-4.6.4/bin/arm-none-linux-guneabicc=$(CROSS_COMPILE)gcc</span><br><span class="line">//板子上交叉工具的源码路径链</span><br><span class="line">else</span><br><span class="line">KERNELDIR?=/lib/modules/$(shell uname -r)/build</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">PWD:=$(shell pwd)</span><br><span class="line"></span><br><span class="line">modules:</span><br><span class="line">        $(MAKE) -C $(KERNELDIR) M=$(PWD)modules</span><br><span class="line">        $(cc)$(APP_NAME).c -o $(APP_NAME)//调用交叉工具链</span><br><span class="line">modules_install:</span><br><span class="line">        $(MAKE) -C $(KERNELIR)M=%(PWD)INSTALL_MOD_PATH=$(ROOTFS)modules_install</span><br><span class="line">clean:</span><br><span class="line">        $(MAKE) -C %(KERNEL_DIR)M=$(CUR_DIR)clean</span><br><span class="line"></span><br><span class="line">else</span><br><span class="line"></span><br><span class="line">obj-m +=hello.o</span><br><span class="line">endif</span><br></pre></td></tr></table></figure></li>
+<li>升级版</li>
 </ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">APP_NAME=hello_test</span><br><span class="line">//生成可执行文件的名字</span><br><span class="line">ifeq ($ (KERNELRELEASE),)</span><br><span class="line">ifeq($(ARCH),arm)</span><br><span class="line">KERNELDIR?=目标板linux内核源码顶层目录的绝对路径</span><br><span class="line">ROOTFS?=目标板根文件系统顶层目录的绝对路径</span><br><span class="line">CROSS_COMPILE=ubuntu上交叉工具链的绝对路径/gcc-4.6.4/bin/arm-none-linux-guneabicc=$(CROSS_COMPILE)gcc</span><br><span class="line">//板子上交叉工具的源码路径链</span><br><span class="line">else</span><br><span class="line">KERNELDIR?=/lib/modules/$(shell uname -r)/build</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">PWD:=$(shell pwd)</span><br><span class="line"></span><br><span class="line">modules:</span><br><span class="line">        $(MAKE) -C $(KERNELDIR) M=$(PWD)modules</span><br><span class="line">        $(cc)$(APP_NAME).c -o $(APP_NAME)//调用交叉工具链</span><br><span class="line">modules_install:</span><br><span class="line">        $(MAKE) -C $(KERNELIR)M=%(PWD)INSTALL_MOD_PATH=$(ROOTFS)modules_install</span><br><span class="line">clean:</span><br><span class="line">        $(MAKE) -C %(KERNEL_DIR)M=$(CUR_DIR)clean</span><br><span class="line"></span><br><span class="line">else</span><br><span class="line"></span><br><span class="line">obj-m +=hello.o</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://www.gnu.org/software/">http://www.gnu.org/software/</a></p>
 </div>
         </div>
         
@@ -309,13 +323,11 @@
             const hostUrl       = "http://example.com/2022/10/24/makefile-%E7%AC%94%E8%AE%B0/";
             const title         = "「makefile-笔记」";
             const excerpt       = `{1.快速编译基础，2.生成多个程序的Makefile 3. 生成驱动模块的Makefile}
-1. 快速编译基础
-makefile生成可执行程序 -
-
+1. 快速编译基础makefile生成可执行程序 -
 make脚本生成多个可执行文件
 make 工程管理器，也称“自动编译管理器”
 
-...`;
+读入...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -337,7 +349,7 @@ make 工程管理器，也称“自动编译管理器”
                     
                 </div>
                 <div class="pull-date">
-                    <time datetime="2022-11-11T07:58:38.153Z" itemprop="dateModified">最后编辑：2022-11-11</time>
+                    <time datetime="2022-11-14T01:45:11.554Z" itemprop="dateModified">最后编辑：2022-11-14</time>
                 </div>
             </div>
         </footer>
@@ -349,6 +361,10 @@ make 工程管理器，也称“自动编译管理器”
                 <a title=" c++笔记-1" href="/2022/10/22/c-笔记-1/">&lt; 上一篇</a>
             </div>
             
+            
+            <div class="nav-next clearfix">
+                <a title=" 微信小程序-1" href="/2022/11/11/微信小程序-1/">下一篇 &gt;</a>
+            </div>
             
         </nav>
     
@@ -384,7 +400,7 @@ make 工程管理器，也称“自动编译管理器”
                 文章
             </span>
             <span class="count">
-                15
+                17
             </span>
         </a>
         <a class="meta-item" href="/categories/">
@@ -429,6 +445,18 @@ make 工程管理器，也称“自动编译管理器”
         
           
           
+            <a class="list-group-item" href="/2022/11/12/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-2/"><i class="fa  fa-book"></i> 微信小程序-2</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/11/11/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-1/"><i class="fa  fa-book"></i> 微信小程序-1</a>
+            
+          
+        
+          
+          
             <a class="list-group-item" href="/2022/10/24/makefile-%E7%AC%94%E8%AE%B0/"><i class="fa  fa-book"></i> makefile-笔记</a>
             
           
@@ -446,17 +474,9 @@ make 工程管理器，也称“自动编译管理器”
           
         
           
-          
-            <a class="list-group-item" href="/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-9/"><i class="fa  fa-book"></i> Linux学习-9</a>
             
           
-        
-          
-          
-            <a class="list-group-item" href="/2022/10/19/Linux%E5%AD%A6%E4%B9%A0-8/"><i class="fa  fa-book"></i> Linux学习-8</a>
             
-          
-        
           
             
           
