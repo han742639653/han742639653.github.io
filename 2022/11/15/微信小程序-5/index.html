@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  
+  
+  <title>微信小程序-5 | 荒凉院子</title>
+  <meta name="author" content="韩 亮" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="" />
+  
+  <meta name="description" content="WXML 模板语法1.数据绑定123456基本原则1.在data中定义数据2.在WXML中使用数据在data中定义页面的数据在页面对应的.js文件中，把数据定义到data对象中即可：  把data中的数据绑定到页面中渲染，使用Mustache语法将变量包起来即可。语法格式为： 1&lt;view&gt;&amp;#123;&amp;#123;要绑定的数据名称&amp;#125;&amp;#125;&lt;&#x2F;view&gt;  实">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序-5">
+<meta property="og:url" content="http://example.com/2022/11/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-5/index.html">
+<meta property="og:site_name" content="荒凉院子">
+<meta property="og:description" content="WXML 模板语法1.数据绑定123456基本原则1.在data中定义数据2.在WXML中使用数据在data中定义页面的数据在页面对应的.js文件中，把数据定义到data对象中即可：  把data中的数据绑定到页面中渲染，使用Mustache语法将变量包起来即可。语法格式为： 1&lt;view&gt;&amp;#123;&amp;#123;要绑定的数据名称&amp;#125;&amp;#125;&lt;&#x2F;view&gt;  实">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/11/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-5/3-1.jpg">
+<meta property="og:image" content="http://example.com/2022/11/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-5/3-2.jpg">
+<meta property="og:image" content="http://example.com/2022/11/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-5/5-1.jpg">
+<meta property="og:image" content="http://example.com/2022/11/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-5/5-2.jpg">
+<meta property="og:image" content="http://example.com/2022/11/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-5/5-3.jpg">
+<meta property="article:published_time" content="2022-11-15T07:32:45.000Z">
+<meta property="article:modified_time" content="2022-11-16T06:37:36.285Z">
+<meta property="article:author" content="韩 亮">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/11/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-5/3-1.jpg">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('/images/banner.webp');
+      }
+    
+    
+      @media(min-width:768px) {
+        body.custom-background {
+          background-image: url('/images/bg.webp');
+        }
+      }
+    
+  </style>
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                    
+                                        
+                                            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                        
+                                    
+                                        
+                                            <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                        
+                                    
+                                        
+                                            <li><a href="/friends/"><i class="fa fa-paw"></i>好伙伴</a></li>
+                                        
+                                    
+                                        
+                                            <li><a target="_blank" rel="noopener" href="https://github.com/han742639653"></a></li>
+                                        
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">荒凉院子</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>荒凉院子</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-5/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">微信小程序-5</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2022-11-15T07:32:45.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2022-11-15</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">韩 亮</span>
+                </li>
+                <li>
+                    <i class="fa fa-edit"></i> 
+                    
+                    
+                        ~4.04K
+                    
+                    字
+                </li>
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1668580656285"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+            <hr />
+            <div itemprop="articleBody"><h2 id="WXML-模板语法"><a href="#WXML-模板语法" class="headerlink" title="WXML 模板语法"></a>WXML 模板语法</h2><h3 id="1-数据绑定"><a href="#1-数据绑定" class="headerlink" title="1.数据绑定"></a>1.数据绑定</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">基本原则</span><br><span class="line">1.在data中定义数据</span><br><span class="line">2.在WXML中使用数据</span><br><span class="line"></span><br><span class="line">在data中定义页面的数据</span><br><span class="line">在页面对应的.js文件中，把数据定义到data对象中即可：</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/11/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-5/3-1.jpg" alt="data定义"></p>
+<p>把data中的数据绑定到页面中渲染，使用Mustache语法将变量包起来即可。语法格式为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;view&gt;&#123;&#123;要绑定的数据名称&#125;&#125;&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>实际代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">-----.js----</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * 页面的初始数据</span><br><span class="line">   */</span><br><span class="line">  data:&#123;</span><br><span class="line">    //字符串类型</span><br><span class="line">    info: &#x27;string data&#x27;,</span><br><span class="line">    //数组类型的数据</span><br><span class="line">    msgList:[&#123;msg: &#x27;hello&#x27;&#125;,&#123;msg: &#x27;world&#x27;&#125;]</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;&#125;</span><br><span class="line"></span><br><span class="line">------ .wxml----</span><br><span class="line">&lt;view&gt;&#123;&#123;info&#125;&#125;&lt;/view&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="1-1-Mustache-语法的应用场景"><a href="#1-1-Mustache-语法的应用场景" class="headerlink" title="1.1 Mustache 语法的应用场景"></a>1.1 Mustache 语法的应用场景</h4><ul>
+<li>绑定内容</li>
+<li>绑定属性</li>
+<li>运算(三元运算，算术运算)</li>
+</ul>
+<p><img src="/2022/11/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-5/3-2.jpg" alt="动态绑定内容"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">---动态绑定属性</span><br><span class="line"></span><br><span class="line">----.js---</span><br><span class="line">Page(&#123;</span><br><span class="line">    data: &#123;</span><br><span class="line">        imgSrc: &#x27;https://t7.baidu.com/it/u=848096684,3883475370&amp;fm=193&amp;f=GIF&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---.wxml---</span><br><span class="line">&lt;image src=&quot;&#123;&#123;imgSrc&#125;&#125;&quot;&gt;&lt;/image&gt;</span><br></pre></td></tr></table></figure>
+<p>三元运算</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---.js---</span><br><span class="line">Page(&#123;</span><br><span class="line">    data: &#123;</span><br><span class="line">        randomNum: Math.random()*10 //生成10以内的随机数</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">----.wxml---</span><br><span class="line">&lt;view&gt;&#123;&#123;randomNum &gt;= 5 ? &#x27;随机数字大于或等于5&#x27; : &#x27;随机数字小于5&#x27;&#125;&#125;&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>算数运算</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---.js--</span><br><span class="line">Page(&#123;</span><br><span class="line">    data: &#123;</span><br><span class="line"></span><br><span class="line">        randomNum: Math.random().toFixed(2) //生成一个带两位小数的随机数</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">---.wxml--</span><br><span class="line">&lt;view&gt;生成100以内的随机数：&#123;&#123;randomNum *100&#125;&#125;&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h2><p>事件是渲染层到逻辑层的通讯方式。通过事件可以将用户在渲染层产生的行为，反馈到逻辑层进行业务处理。<br><img src="/2022/11/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-5/5-1.jpg" alt="交互事件"></p>
+<p><img src="/2022/11/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-5/5-2.jpg" alt="小程序常用事件"></p>
+<h5 id="事件对象的属性列表"><a href="#事件对象的属性列表" class="headerlink" title="事件对象的属性列表"></a>事件对象的属性列表</h5><p>当事件回调触发的时候，会收到一个事件对象event：</p>
+<p><img src="/2022/11/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-5/5-3.jpg" alt="属性列表"></p>
+<p>target和currentTarget的区别</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">target是触发该事件的源头组件，而currentTarget则是当前事件所绑定的组件。</span><br><span class="line">----.wxml---</span><br><span class="line">&lt;view class=&quot;outer-view&quot; bindtap=&quot;outerHandler&quot;&gt;//定义一个按钮</span><br><span class="line"></span><br><span class="line">  &lt;button type=&quot;primary&quot;&gt;按钮&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>点击内部按钮时，点击事件以冒泡的方式向外扩散，也会触发外层view的tap事件处理函数。</li>
+<li>对于外层view:</li>
+<li>e.target指向的是触发事件的源头组件,因此,e.target是内部的按钮组件</li>
+<li>e.currentTarget指向的是当前正在触发事件的那个组件，因此,e.currentTarge是当前view组件</li>
+</ul>
+<h5 id="bindtap-的语法格式"><a href="#bindtap-的语法格式" class="headerlink" title="bindtap 的语法格式"></a>bindtap 的语法格式</h5><p>在小程序，不存在HTML中的onclick鼠标点击事件，是通过tap事件来响应用户的触摸行为。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1. 通过bindtap，可以为组件绑定tap触摸事件</span><br><span class="line">----.wxml---</span><br><span class="line">&lt;button type=&quot;primary &quot; bindtap=&quot;btnTapHandler&quot;&gt;按钮&lt;/button&gt;</span><br><span class="line">2.在,js文件中定义对应的事件处理函数，事件参数通过形参event(一般简写成e)来接受</span><br><span class="line"></span><br><span class="line">---.js----</span><br><span class="line">Page(&#123;</span><br><span class="line"></span><br><span class="line">    btnTapHandler(event)&#123;//按钮的tap事件处理函数</span><br><span class="line">        console.log(event)//打印event属性</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>在事件处理函数中为data中的数据赋值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">通过调用this.setData(dataObject)方法，可以给页面data中数据重新赋值</span><br><span class="line">---.js---</span><br><span class="line">Page(&#123;</span><br><span class="line"></span><br><span class="line">    data: &#123;</span><br><span class="line">        count: 0</span><br><span class="line">    &#125;,</span><br><span class="line">    //修改count值  +1</span><br><span class="line">    CountChange()&#123;</span><br><span class="line">        this.setData(&#123;</span><br><span class="line">            count: this.data.count+1</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">----.wxml</span><br><span class="line">&lt;button type=&quot;primary&quot; bindtap=&quot;CountChange&quot;&gt;+1&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>事件传参</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">小程序的事件传参比较特殊，不能在绑定事件的同时为事件处理函数传递参数，如下代码不能正常工作</span><br><span class="line">&lt;button type=&quot;primary&quot; bindtap=&#x27;btnHandler(123)&#x27;事件传参&lt;/button&gt;</span><br><span class="line">因为小程序会把bindtap的属性值，统一当作事件名称处理，相当于要调用一个名称为btnHandler(123)的事件处理函数</span><br><span class="line"></span><br><span class="line">可以为组件提供data-* 自定义属性传参，其中*代表的是参数的名字</span><br><span class="line">&lt;button bindtap=&quot;bynHandler&quot; data-info=&quot;&#123;&#123;2&#125;&#125;&quot;&gt;事件传参&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">info会解析为参数的名字</span><br><span class="line">数值2 会被解析为参数的值</span><br><span class="line"></span><br><span class="line">在事件处理函数中，通过event.target.dataset.参数名，即可获取到具体参数值</span><br><span class="line"></span><br><span class="line">  bynHandle(event)&#123;</span><br><span class="line">   </span><br><span class="line">    console.log(event.target.dataset),</span><br><span class="line">    console.log(event.target.dataset.info)  </span><br><span class="line">  &#125;,</span><br><span class="line">    btnADD2(event)&#123;</span><br><span class="line">    this.setData(&#123;count:this.data.count+event.target.dataset.info&#125;)//count +2 </span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<ul>
+<li>bindinput 的语法格式</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">通过input事件来响应文本框的输入事件：</span><br><span class="line"></span><br><span class="line">1. 通过bindinput，文本框绑定输入事件</span><br><span class="line"></span><br><span class="line">---.wxml</span><br><span class="line">&lt;input bindinput=&quot;inputHandler&quot;&gt;&lt;/input&gt;</span><br><span class="line"></span><br><span class="line">2.在.js中定义事件处理函数</span><br><span class="line">inputHandler(event)&#123;</span><br><span class="line">    //event.detail.value是变化后，文本框最新值</span><br><span class="line">    console.log(event.edtail.value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>实现文本框和data之间的数据同步</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">实现步骤</span><br><span class="line">1.定义数据</span><br><span class="line">2.渲染结构</span><br><span class="line">3.美化样式</span><br><span class="line">4.绑定input事件处理函数</span><br><span class="line"></span><br><span class="line">定义数据</span><br><span class="line">----.js--</span><br><span class="line">Page(&#123;</span><br><span class="line"></span><br><span class="line">    data: &#123;</span><br><span class="line">        msg: &#x27;你好，&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">渲染结构</span><br><span class="line">---.wxml---</span><br><span class="line">&lt;input value=&quot;&#123;&#123;msg&#125;&#125;&quot; bindinput= &quot;iptHandler&quot;&gt;&lt;/input&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">美化样式结构</span><br><span class="line">---.wxcs---</span><br><span class="line">input&#123;</span><br><span class="line">  border: 1px solid #eee;</span><br><span class="line">  padding: 5px;</span><br><span class="line">  margin: 5px;</span><br><span class="line">  border-radius: 3px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">绑定input事件处理函数</span><br><span class="line">iptHandler(event)&#123;</span><br><span class="line"></span><br><span class="line">    this.setData(&#123;</span><br><span class="line">        msg: event.detail.value</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "http://example.com/2022/11/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-5/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "http://example.com/2022/11/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-5/";
+            const title         = "「微信小程序-5」";
+            const excerpt       = `WXML 模板语法1.数据绑定123456基本原则1.在data中定义数据2.在WXML中使用数据在data中定义页面的数据在页面对应的.js文件中，把数据定义到data对象中即可：
+
+把data中的数据绑定到页面中渲染，使用Must...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    
+                </div>
+                <div class="pull-date">
+                    <time datetime="2022-11-16T06:37:36.285Z" itemprop="dateModified">最后编辑：2022-11-16</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" 微信小程序-4" href="/2022/11/14/微信小程序-4/">&lt; 上一篇</a>
+            </div>
+            
+            
+            <div class="nav-next clearfix">
+                <a title=" 微信小程序-6" href="/2022/11/16/微信小程序-6/">下一篇 &gt;</a>
+            </div>
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/2.webp" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                24
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                0
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                2
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 0.6em;">测试</a> <a href="/tags/%E8%87%AA%E5%AD%A6/" style="font-size: 0.8em;">自学</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2023/01/30/opencl-%E7%AC%94%E8%AE%B01/"><i class="fa  fa-book"></i> opencl-笔记1</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/01/29/c-%E7%AC%94%E8%AE%B0/"><i class="fa  fa-book"></i> c++笔记</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/11/16/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/"><i class="fa  fa-book"></i> 知识图谱</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/11/16/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-6/"><i class="fa  fa-book"></i> 微信小程序-6</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/11/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-5/"><i class="fa  fa-book"></i> 微信小程序-5</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2023 荒凉院子 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by 韩 亮.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/vendors/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
