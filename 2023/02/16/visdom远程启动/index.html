@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   
   
-  <title>微信小程序-6 | 荒凉院子</title>
+  <title>visdom远程启动 | 荒凉院子</title>
   <meta name="author" content="韩 亮" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -16,15 +16,15 @@
   
     <meta name="keywords" content="" />
   
-  <meta name="description" content="1. 条件渲染在小程序中，使用wx:if&#x3D;”“来判断是否需要渲染该代码块：">
+  <meta name="description" content="pytracking 配置问题（1）服务器远程连接   ssh 连接服务器 12345运行命令：ssh -L &lt;本地端口&gt;：localhost:8097 -p &lt;ssh访问服务器的端口号&gt; &lt;服务器名&gt;@&lt;ssh 服务器ip&gt;本地端口可以任意指定ssh -L 8000:localhost:8097 -p 12686 nwpu1@s3.z100.vip">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微信小程序-6">
-<meta property="og:url" content="http://example.com/2022/11/16/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-6/index.html">
+<meta property="og:title" content="visdom远程启动">
+<meta property="og:url" content="http://example.com/2023/02/16/visdom%E8%BF%9C%E7%A8%8B%E5%90%AF%E5%8A%A8/index.html">
 <meta property="og:site_name" content="荒凉院子">
-<meta property="og:description" content="1. 条件渲染在小程序中，使用wx:if&#x3D;”“来判断是否需要渲染该代码块：">
+<meta property="og:description" content="pytracking 配置问题（1）服务器远程连接   ssh 连接服务器 12345运行命令：ssh -L &lt;本地端口&gt;：localhost:8097 -p &lt;ssh访问服务器的端口号&gt; &lt;服务器名&gt;@&lt;ssh 服务器ip&gt;本地端口可以任意指定ssh -L 8000:localhost:8097 -p 12686 nwpu1@s3.z100.vip">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-11-16T06:42:19.000Z">
-<meta property="article:modified_time" content="2022-12-15T06:57:31.248Z">
+<meta property="article:published_time" content="2023-02-16T09:32:29.000Z">
+<meta property="article:modified_time" content="2023-02-16T09:46:04.373Z">
 <meta property="article:author" content="韩 亮">
 <meta name="twitter:card" content="summary">
   
@@ -147,15 +147,15 @@
 
             <article itemscope itemtype="https://schema.org/Article">
     
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/16/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-6/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/16/visdom%E8%BF%9C%E7%A8%8B%E5%90%AF%E5%8A%A8/">
     <div class="kratos-hentry kratos-post-inner clearfix">
         <header class="kratos-entry-header">
             
-                <h1 class="kratos-entry-title text-center" itemprop="name headline">微信小程序-6</h1>
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">visdom远程启动</h1>
             
             
             <ul class="kratos-post-meta text-center">
-                <li><time datetime="2022-11-16T06:42:19.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2022-11-16</time></li>
+                <li><time datetime="2023-02-16T09:32:29.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2023-02-16</time></li>
                 <li itemprop="author" itemscope itemtype="https://schema.org/Person">
                     <i class="fa fa-user"></i> 作者 <span itemprop="name">韩 亮</span>
                 </li>
@@ -163,7 +163,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        38
+                        291
                     
                     字
                 </li>
@@ -174,13 +174,21 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1671087451248"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1676540764373"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
             <hr />
-            <div itemprop="articleBody"><h3 id="1-条件渲染"><a href="#1-条件渲染" class="headerlink" title="1. 条件渲染"></a>1. 条件渲染</h3><p>在小程序中，使用wx:if=”“来判断是否需要渲染该代码块：</p>
+            <div itemprop="articleBody"><h2 id="pytracking-配置问题（1）"><a href="#pytracking-配置问题（1）" class="headerlink" title="pytracking 配置问题（1）"></a>pytracking 配置问题（1）</h2><p>服务器远程连接 </p>
+<ul>
+<li><p>ssh 连接服务器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">运行命令：</span><br><span class="line">ssh -L &lt;本地端口&gt;：localhost:8097 -p &lt;ssh访问服务器的端口号&gt; &lt;服务器名&gt;@&lt;ssh 服务器ip&gt;</span><br><span class="line"></span><br><span class="line">本地端口可以任意指定</span><br><span class="line">ssh -L 8000:localhost:8097 -p 12686 nwpu1@s3.z100.vip</span><br></pre></td></tr></table></figure></li>
+<li><p>visdom 启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">visdom</span><br><span class="line">python -m visdom.server</span><br></pre></td></tr></table></figure></li>
+<li><p>本地访问服务器可视化visdom</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">阅览器</span><br><span class="line">localhost:&lt;设定本地端口&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
 </div>
         </div>
         
@@ -234,7 +242,7 @@
     <script type="text/javascript">
         $(()=>{
             new QRCode("wechat-qr", {
-                text: "http://example.com/2022/11/16/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-6/",
+                text: "http://example.com/2023/02/16/visdom%E8%BF%9C%E7%A8%8B%E5%90%AF%E5%8A%A8/",
                 width: 150,
                 height: 150,
                 correctLevel : QRCode.CorrectLevel.H
@@ -246,10 +254,12 @@
             const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
-            const hostUrl       = "http://example.com/2022/11/16/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-6/";
-            const title         = "「微信小程序-6」";
-            const excerpt       = `1. 条件渲染在小程序中，使用wx:if=”“来判断是否需要渲染该代码块：
-`;
+            const hostUrl       = "http://example.com/2023/02/16/visdom%E8%BF%9C%E7%A8%8B%E5%90%AF%E5%8A%A8/";
+            const title         = "「visdom远程启动」";
+            const excerpt       = `pytracking 配置问题（1）服务器远程连接 
+
+ssh 连接服务器
+12345运行命令：ssh -L &lt;本地端口&gt;：localhost:8097 -p &lt;ssh访问服务器的端口号&gt; &lt;服务器名&g...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -271,7 +281,7 @@
                     
                 </div>
                 <div class="pull-date">
-                    <time datetime="2022-12-15T06:57:31.248Z" itemprop="dateModified">最后编辑：2022-12-15</time>
+                    <time datetime="2023-02-16T09:46:04.373Z" itemprop="dateModified">最后编辑：2023-02-16</time>
                 </div>
             </div>
         </footer>
@@ -280,13 +290,9 @@
         <nav class="navigation post-navigation clearfix" role="navigation">
             
             <div class="nav-previous clearfix">
-                <a title=" 微信小程序-5" href="/2022/11/15/微信小程序-5/">&lt; 上一篇</a>
+                <a title=" opencl-笔记1" href="/2023/01/30/opencl-笔记1/">&lt; 上一篇</a>
             </div>
             
-            
-            <div class="nav-next clearfix">
-                <a title=" 知识图谱" href="/2022/11/16/知识图谱/">下一篇 &gt;</a>
-            </div>
             
         </nav>
     
