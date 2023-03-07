@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   
   
-  <title>微信小程序-6 | 荒凉院子</title>
+  <title>二维数组转为eigen中矩阵 | 荒凉院子</title>
   <meta name="author" content="韩 亮" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -16,15 +16,15 @@
   
     <meta name="keywords" content="" />
   
-  <meta name="description" content="1. 条件渲染在小程序中，使用wx:if&#x3D;”“来判断是否需要渲染该代码块：">
+  <meta name="description" content="eigen 学习笔记MatrixXd12345在eigen中矩阵默认是列优先，而向量VectorXd只能是列优先，而重载&quot;&lt;&lt;&quot;操作符是一行，一行输入；矩阵元素的访问可以通过&quot;()&quot;操作符完成。eg: Eigen::MatrixXd  Data(4,4);&#x2F;&#x2F;定义一个4*4大小的矩阵    int a&#x3D;3；    Data（2，3）&#x3D;a;&#x2F;&#x2F;将D">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微信小程序-6">
-<meta property="og:url" content="http://example.com/2022/11/16/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-6/index.html">
+<meta property="og:title" content="二维数组转为eigen中矩阵">
+<meta property="og:url" content="http://example.com/2023/03/07/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BAeigen%E4%B8%AD%E7%9F%A9%E9%98%B5/index.html">
 <meta property="og:site_name" content="荒凉院子">
-<meta property="og:description" content="1. 条件渲染在小程序中，使用wx:if&#x3D;”“来判断是否需要渲染该代码块：">
+<meta property="og:description" content="eigen 学习笔记MatrixXd12345在eigen中矩阵默认是列优先，而向量VectorXd只能是列优先，而重载&quot;&lt;&lt;&quot;操作符是一行，一行输入；矩阵元素的访问可以通过&quot;()&quot;操作符完成。eg: Eigen::MatrixXd  Data(4,4);&#x2F;&#x2F;定义一个4*4大小的矩阵    int a&#x3D;3；    Data（2，3）&#x3D;a;&#x2F;&#x2F;将D">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-11-16T06:42:19.000Z">
-<meta property="article:modified_time" content="2022-12-15T06:57:31.248Z">
+<meta property="article:published_time" content="2023-03-07T01:14:51.000Z">
+<meta property="article:modified_time" content="2023-03-07T01:40:34.774Z">
 <meta property="article:author" content="韩 亮">
 <meta name="twitter:card" content="summary">
   
@@ -147,15 +147,15 @@
 
             <article itemscope itemtype="https://schema.org/Article">
     
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/16/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-6/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/07/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BAeigen%E4%B8%AD%E7%9F%A9%E9%98%B5/">
     <div class="kratos-hentry kratos-post-inner clearfix">
         <header class="kratos-entry-header">
             
-                <h1 class="kratos-entry-title text-center" itemprop="name headline">微信小程序-6</h1>
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">二维数组转为eigen中矩阵</h1>
             
             
             <ul class="kratos-post-meta text-center">
-                <li><time datetime="2022-11-16T06:42:19.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2022-11-16</time></li>
+                <li><time datetime="2023-03-07T01:14:51.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2023-03-07</time></li>
                 <li itemprop="author" itemscope itemtype="https://schema.org/Person">
                     <i class="fa fa-user"></i> 作者 <span itemprop="name">韩 亮</span>
                 </li>
@@ -163,7 +163,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        38
+                        821
                     
                     字
                 </li>
@@ -174,13 +174,14 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1671087451248"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1678153234774"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
             <hr />
-            <div itemprop="articleBody"><h3 id="1-条件渲染"><a href="#1-条件渲染" class="headerlink" title="1. 条件渲染"></a>1. 条件渲染</h3><p>在小程序中，使用wx:if=”“来判断是否需要渲染该代码块：</p>
+            <div itemprop="articleBody"><h2 id="eigen-学习笔记"><a href="#eigen-学习笔记" class="headerlink" title="eigen 学习笔记"></a>eigen 学习笔记</h2><h2 id="MatrixXd"><a href="#MatrixXd" class="headerlink" title="MatrixXd"></a>MatrixXd</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在eigen中矩阵默认是列优先，而向量VectorXd只能是列优先，而重载&quot;&lt;&lt;&quot;操作符是一行，一行输入；</span><br><span class="line">矩阵元素的访问可以通过&quot;()&quot;操作符完成。</span><br><span class="line">eg: Eigen::MatrixXd  Data(4,4);//定义一个4*4大小的矩阵</span><br><span class="line">    int a=3；</span><br><span class="line">    Data（2，3）=a;//将Data矩阵2行3列赋值为3；</span><br></pre></td></tr></table></figure>
+<h4 id="二维数组转为eigen的matrixXd-矩阵"><a href="#二维数组转为eigen的matrixXd-矩阵" class="headerlink" title="二维数组转为eigen的matrixXd 矩阵"></a>二维数组转为eigen的matrixXd 矩阵</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;Eigen/Dense&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    double parameter[5][4]=&#123;&#123;1,2,3,4&#125;,</span><br><span class="line">                            &#123;6,7,8,9&#125;,</span><br><span class="line">                            &#123;10,11,12,13&#125;,</span><br><span class="line">                            &#123;14,15,16,17&#125;,</span><br><span class="line">                            &#123;18,19,20,21&#125;&#125;;</span><br><span class="line">    Eigin::MatrixXd Data(5,4);</span><br><span class="line">    for(int i=0;i&lt;5;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j=0;j&lt;4;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            Data(5,4)=parameter[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 </div>
         </div>
         
@@ -234,7 +235,7 @@
     <script type="text/javascript">
         $(()=>{
             new QRCode("wechat-qr", {
-                text: "http://example.com/2022/11/16/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-6/",
+                text: "http://example.com/2023/03/07/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BAeigen%E4%B8%AD%E7%9F%A9%E9%98%B5/",
                 width: 150,
                 height: 150,
                 correctLevel : QRCode.CorrectLevel.H
@@ -246,10 +247,9 @@
             const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
-            const hostUrl       = "http://example.com/2022/11/16/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-6/";
-            const title         = "「微信小程序-6」";
-            const excerpt       = `1. 条件渲染在小程序中，使用wx:if=”“来判断是否需要渲染该代码块：
-`;
+            const hostUrl       = "http://example.com/2023/03/07/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BAeigen%E4%B8%AD%E7%9F%A9%E9%98%B5/";
+            const title         = "「二维数组转为eigen中矩阵」";
+            const excerpt       = `eigen 学习笔记MatrixXd12345在eigen中矩阵默认是列优先，而向量VectorXd只能是列优先，而重载&quot;&lt;&lt;&quot;操作符是一行，一行输入；矩阵元素的访问可以通过&quot;()&quot;...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -271,7 +271,7 @@
                     
                 </div>
                 <div class="pull-date">
-                    <time datetime="2022-12-15T06:57:31.248Z" itemprop="dateModified">最后编辑：2022-12-15</time>
+                    <time datetime="2023-03-07T01:40:34.774Z" itemprop="dateModified">最后编辑：2023-03-07</time>
                 </div>
             </div>
         </footer>
@@ -280,13 +280,9 @@
         <nav class="navigation post-navigation clearfix" role="navigation">
             
             <div class="nav-previous clearfix">
-                <a title=" 微信小程序-5" href="/2022/11/15/微信小程序-5/">&lt; 上一篇</a>
+                <a title=" 回归分析" href="/2023/02/28/线性分析/">&lt; 上一篇</a>
             </div>
             
-            
-            <div class="nav-next clearfix">
-                <a title=" 知识图谱" href="/2022/11/16/知识图谱/">下一篇 &gt;</a>
-            </div>
             
         </nav>
     
