@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  
+  
+  <title>GAN学习笔记1 | 荒凉院子</title>
+  <meta name="author" content="韩 亮" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="" />
+  
+  <meta name="description" content="GAN（生成对抗网络）是一类用于生成模型的神经网络模型，它由生成器和判别器两个部分组成。下面是一些常见的GAN网络模型： 原始的GAN（GAN, Generative Adversarial Network）：由Ian Goodfellow等人于2014年提出的最早的GAN模型。 DCGAN（Deep Convolutional GAN）：在原始GAN的基础上，引入了卷积神经网络结构，适用于图像生">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GAN学习笔记1">
+<meta property="og:url" content="http://example.com/2023/12/30/GAN%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/index.html">
+<meta property="og:site_name" content="荒凉院子">
+<meta property="og:description" content="GAN（生成对抗网络）是一类用于生成模型的神经网络模型，它由生成器和判别器两个部分组成。下面是一些常见的GAN网络模型： 原始的GAN（GAN, Generative Adversarial Network）：由Ian Goodfellow等人于2014年提出的最早的GAN模型。 DCGAN（Deep Convolutional GAN）：在原始GAN的基础上，引入了卷积神经网络结构，适用于图像生">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-12-30T02:14:51.000Z">
+<meta property="article:modified_time" content="2023-12-30T02:18:27.792Z">
+<meta property="article:author" content="韩 亮">
+<meta name="twitter:card" content="summary">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('/images/banner.webp');
+      }
+    
+    
+      @media(min-width:768px) {
+        body.custom-background {
+          background-image: url('/images/bg.webp');
+        }
+      }
+    
+  </style>
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                    
+                                        
+                                            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                        
+                                    
+                                        
+                                            <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                        
+                                    
+                                        
+                                            <li><a href="/friends/"><i class="fa fa-paw"></i>好伙伴</a></li>
+                                        
+                                    
+                                        
+                                            <li><a target="_blank" rel="noopener" href="https://github.com/han742639653"></a></li>
+                                        
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">荒凉院子</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>荒凉院子</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/30/GAN%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">GAN学习笔记1</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2023-12-30T02:14:51.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2023-12-30</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">韩 亮</span>
+                </li>
+                <li>
+                    <i class="fa fa-edit"></i> 
+                    
+                    
+                        ~2.01K
+                    
+                    字
+                </li>
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1703902707792"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+            <hr />
+            <div itemprop="articleBody"><p>GAN（生成对抗网络）是一类用于生成模型的神经网络模型，它由生成器和判别器两个部分组成。下面是一些常见的GAN网络模型：</p>
+<p>原始的GAN（GAN, Generative Adversarial Network）：由Ian Goodfellow等人于2014年提出的最早的GAN模型。</p>
+<p>DCGAN（Deep Convolutional GAN）：在原始GAN的基础上，引入了卷积神经网络结构，适用于图像生成任务。</p>
+<p>CGAN（Conditional GAN）：在GAN中加入条件信息，使得生成器能够根据给定条件生成符合要求的样本。</p>
+<p>WGAN（Wasserstein GAN）：采用Wasserstein距离作为损失函数，解决了GAN训练过程中的模式崩溃和不稳定性问题。</p>
+<p>CycleGAN：用于图像转换任务，可以实现不同领域之间的图像转换，如马到斑马、苹果到橙子等。</p>
+<p>Pix2Pix：用于图像翻译任务，将输入图像转换为输出图像，如黑白照片到彩色照片、草图到真实图像等。</p>
+<p>StyleGAN（Style-Generative Adversarial Network）：通过学习图像的风格和内容分离的方式，实现高分辨率图像的生成。</p>
+<p>这些仅是GAN模型中的一部分，随着研究的深入和发展，还有许多其他的GAN变体和改进模型。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">有几种常见的基于GAN的图像修复模型，可以用于图像修复任务。以下是其中一些常见的GAN模型：</span><br><span class="line"></span><br><span class="line">Context Encoders（Inpainting GAN）：这是最早的图像修复GAN模型之一，由Pathak等人在2016年提出。该模型通过学习将缺失部分的图像恢复为完整的图像。</span><br><span class="line"></span><br><span class="line">PatchGAN：这是一种常用于图像修复的判别器架构。它不仅评估整个图像的真实性，还评估图像中每个局部区域（patch）的真实性，从而使生成器能够更好地还原缺失区域。</span><br><span class="line"></span><br><span class="line">SRGAN（Super-Resolution GAN）：这是用于图像超分辨率（图像放大）任务的GAN模型。它可以将低分辨率图像转换为高分辨率图像，以实现图像的清晰度提升。</span><br><span class="line"></span><br><span class="line">DeepFillv1/v2/v3：这是一种基于GAN的图像修复模型，由NVIDIA提出。它通过学习图像的上下文信息，自动填充缺失的部分。</span><br><span class="line"></span><br><span class="line">EdgeConnect：这是一种专门用于图像修复的GAN模型，它可以根据图像的边界信息进行修复，使得修复结果更加准确和自然。</span><br><span class="line"></span><br><span class="line">这些模型基于GAN的框架，通过学习大量的图像数据进行训练，以生成具有高质量修复效果的图像。当然，还有其他一些模型和技术可用于图像修复任务，这里只是列举了一些常见的GAN模型。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">在图像处理中，去除遮挡也是一个重要的任务。下面是一些常见的基于GAN的去除遮挡模型：</span><br><span class="line"></span><br><span class="line">GLEAN（Generative Latent Embedded Appearance Model）：这是一种用于去除人脸遮挡的GAN模型。它通过学习将遮挡部分的人脸图像恢复为完整的人脸图像。</span><br><span class="line"></span><br><span class="line">FaceInpainting：这是一种用于去除人脸遮挡的GAN模型。它可以通过学习将遮挡部分的人脸图像恢复为完整的人脸图像，同时保持人脸的真实性和连续性。</span><br><span class="line"></span><br><span class="line">Deocclusion GAN：这是一种用于去除遮挡的通用GAN模型，它可以去除任何类型的遮挡，包括物体、人、背景等。</span><br><span class="line"></span><br><span class="line">这些基于GAN的去除遮挡模型，可以通过学习大量的图像数据进行训练，以生成具有高质量去除遮挡效果的图像。当然，还有其他一些模型和技术可用于去除遮挡任务，这里只是列举了一些常见的GAN模型。</span><br></pre></td></tr></table></figure>
+<p>CycleGAN 是一种基于生成对抗网络（GAN）的图像转换模型。它的主要目标是实现两个不同领域之间的图像转换，而无需成对的训练数据。</p>
+<p>CycleGAN 的用途非常广泛，以下是一些常见的应用场景：</p>
+<p>风格迁移：CycleGAN 可以将一种风格的图像转换为另一种风格，例如将油画风格的图像转换为真实照片风格，或者将夏季风格的图像转换为冬季风格的图像。</p>
+<p>图像翻译：CycleGAN 可以在不同语义领域之间进行图像转换，例如将马的图像转换为斑马的图像，将苹果的图像转换为橘子的图像等。</p>
+<p>动漫风格转换：CycleGAN 可以将真实照片转换为动漫风格的图像，或者将动漫风格的图像转换为真实照片风格，实现动漫化效果。</p>
+<p>图像增强和修复：CycleGAN 可以将低质量图像转换为高质量图像，或者将有缺陷的图像修复为完整的图像。</p>
+<p>跨摄影设备转换：CycleGAN 可以将一种摄影设备拍摄的图像转换为另一种摄影设备的图像，例如将手机拍摄的图像转换为单反相机拍摄的图像。</p>
+<p>需要注意的是，CycleGAN 模型的训练过程可能需要大量的数据和计算资源。此外，模型的性能也受到训练数据的质量和多样性的影响。因此，在实际使用中，需要根据具体任务和数据情况进行适当的调整和优化。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "http://example.com/2023/12/30/GAN%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "http://example.com/2023/12/30/GAN%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/";
+            const title         = "「GAN学习笔记1」";
+            const excerpt       = `GAN（生成对抗网络）是一类用于生成模型的神经网络模型，它由生成器和判别器两个部分组成。下面是一些常见的GAN网络模型：
+原始的GAN（GAN, Generative Adversarial Network）：由Ian Goodfel...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    
+                </div>
+                <div class="pull-date">
+                    <time datetime="2023-12-30T02:18:27.792Z" itemprop="dateModified">最后编辑：2023-12-30</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" raw文件的保存和读取处理" href="/2023/12/21/raw文件的保存和读取处理/">&lt; 上一篇</a>
+            </div>
+            
+            
+            <div class="nav-next clearfix">
+                <a title=" cycleGan环境配置" href="/2024/01/04/cycleGan环境配置/">下一篇 &gt;</a>
+            </div>
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/2.webp" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                44
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                0
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                3
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/eigen/" style="font-size: 0.6em;">eigen</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 0.6em;">测试</a> <a href="/tags/%E8%87%AA%E5%AD%A6/" style="font-size: 0.8em;">自学</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2024/01/10/c-%E8%AF%BB%E5%8F%96txt/"><i class="fa  fa-book"></i> c++读取txt</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2024/01/04/cycleGan%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"><i class="fa  fa-book"></i> cycleGan环境配置</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/12/30/GAN%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/"><i class="fa  fa-book"></i> GAN学习笔记1</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/12/21/raw%E6%96%87%E4%BB%B6%E7%9A%84%E4%BF%9D%E5%AD%98%E5%92%8C%E8%AF%BB%E5%8F%96%E5%A4%84%E7%90%86/"><i class="fa  fa-book"></i> raw文件的保存和读取处理</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/12/21/%E6%8F%90%E7%A4%BA%E5%92%8C%E6%80%BB%E7%BB%93/"><i class="fa  fa-book"></i> 提示和总结</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2024 荒凉院子 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by 韩 亮.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/vendors/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
